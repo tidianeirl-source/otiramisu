@@ -366,10 +366,24 @@
     <p>Écrivez-nous, on vous répond vite.</p>
     <a href="#" class="bouton bouton-whatsapp lien-whatsapp" data-message="Bonjour Ô'tiramisu !">Écrire sur WhatsApp</a>
     <div class="contact-infos">
-      <p>📍 Quartier Château, Grand-Bassam</p>
+      <p>📍 <a href="#plan">Quartier Château, Grand-Bassam</a></p>
       <p>📞 <a href="tel:+2250719245725">07 19 24 57 25</a></p>
       <p><a href="https://www.facebook.com/p/%C3%94tiramisu-61590018016204/" target="_blank" rel="noopener">Suivez-nous sur Facebook</a></p>
     </div>
+
+    <!-- Carte Google Maps : <iframe> = une "fenêtre" qui affiche une autre page web dans la nôtre.
+         Les chiffres dans l'adresse sont la latitude et la longitude de la boutique. -->
+    <div class="carte-maps" id="plan">
+      <iframe
+        src="https://www.google.com/maps?q=5.2154621,-3.7309776&z=17&output=embed"
+        title="Plan d'accès Ô'tiramisu, quartier Château, Grand-Bassam"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+    </div>
+    <!-- loading="lazy" = la carte ne se charge que quand on arrive dessus : la page reste rapide -->
+    <a href="https://www.google.com/maps/place/%C3%94+Tiramisu/@5.2154394,-3.7309883,19z/data=!4m6!3m5!1s0xfc203003f95c9b7:0xcb44e944c03fcc7f!8m2!3d5.2154621!4d-3.7309776"
+       class="bouton bouton-contour" target="_blank" rel="noopener">📍 Itinéraire vers la boutique</a>
   </section>
 
 
