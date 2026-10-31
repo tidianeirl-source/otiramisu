@@ -1,301 +1,381 @@
 /* ============================================================
    style.css — L'APPARENCE du site
+   Inspirations : Levain Bakery (mise en page, bande qui défile, cartes),
+   Cannella (titres élégants, bloc "notre histoire"), Little Tart (grands mots en relief).
    Règle :  sélecteur { propriété: valeur; }
-   .nom = class="nom"   |   #nom = id="nom"   |   h1 = balise h1
    ============================================================ */
 
-/* ---------- 1. Couleurs et réglages (variables) ---------- */
+/* ---------- 1. Couleurs, polices et réglages ---------- */
 :root {
-  /* Couleurs de l'enseigne Ô'tiramisu : or + noir sur blanc, avec un rappel rose (fleurs de la boutique) */
-  --cacao: #1f1a14;      /* noir chaud (textes, fonds sombres) */
-  --cafe: #6b5a3e;       /* brun doré (textes secondaires) */
-  --creme: #fbf8f1;      /* blanc cassé (fond du site) */
-  --mascarpone: #fffdf8; /* blanc (cartes) */
-  --biscuit: #f4e4e7;    /* rose poudré, comme les fleurs de la boutique */
-  --accent: #b8941f;     /* or de l'enseigne (boutons, mots en couleur) */
-  --vert-whatsapp: #25d366;
+  --fond: #f6eee2;        /* beige chaud (fond du site) */
+  --fond-clair: #fbf6ee;  /* beige très clair */
+  --carte: #efe3d1;       /* fond des cartes */
+  --rose: #f2dcd5;        /* rose poudré (panneaux) */
+  --rose-fonce: #dcaea4;  /* rose plus soutenu (bloc histoire) */
+  --or: #c99a2e;          /* or de l'enseigne */
+  --or-clair: #e3bf4f;
+  --encre: #1f1712;       /* noir chaud (textes, contours) */
+  --brun: #3b2a20;        /* brun du pied de page */
+  --texte-doux: #6b5646;  /* texte secondaire */
+  --whatsapp: #25d366;
+
+  --titre: 'Playfair Display', Georgia, serif;
+  --affiche: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  --texte: 'Poppins', Arial, sans-serif;
+
   --rayon: 22px;
-  --ombre: 0 10px 30px rgba(31, 26, 20, 0.09);
+  --largeur: 1200px;      /* largeur maximum du contenu */
 }
 
 /* ---------- 2. Base ---------- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-/* scroll-padding-top : quand on clique sur le menu, la section ne se cache pas sous l'en-tête */
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--creme);
-  color: var(--cacao);
-  line-height: 1.65;
+  font-family: var(--texte);
+  background: var(--fond);
+  color: var(--encre);
+  line-height: 1.6;
 }
 
-h1, h2, h3, .logo { font-family: 'Playfair Display', serif; line-height: 1.15; }
+h1, h2, h3 { font-family: var(--titre); font-weight: 600; line-height: 1.12; }
 
 img { max-width: 100%; display: block; }
-
 a { color: inherit; }
 
-/* ---------- 3. En-tête ---------- */
+/* ---------- 3. Bandeau d'annonce ---------- */
+.annonce {
+  background: var(--encre);
+  color: var(--fond-clair);
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 9px 16px;
+}
+.annonce a { color: var(--or-clair); text-decoration: none; }
+.annonce-sep { margin: 0 10px; color: var(--or-clair); }
+
+/* ---------- 4. En-tête : menu | logo | tampon ---------- */
 .entete {
   position: sticky;
   top: 0;
   z-index: 50;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* 3 colonnes : la colonne du milieu prend juste la place du logo */
   align-items: center;
-  padding: 10px 6%;
-  background: rgba(251, 248, 241, 0.92);
-  backdrop-filter: blur(8px);         /* flou derrière le menu, effet "verre" */
+  padding: 10px 4%;
+  background: rgba(246, 238, 226, 0.94);
+  backdrop-filter: blur(8px);
   transition: box-shadow 0.3s;
 }
+.entete.defile { box-shadow: 0 6px 20px rgba(31, 23, 18, 0.08); }
 
-.entete.defile { box-shadow: 0 4px 20px rgba(59, 36, 24, 0.08); }
-/* la classe "defile" est ajoutée par script.js quand on descend dans la page */
-
-.logo { font-size: 1.7rem; font-weight: 700; text-decoration: none; color: var(--cacao); }
-.logo img { height: 84px; width: auto; display: block; }
-.pied .logo img { height: 72px; }
-
-.menu { display: flex; align-items: center; gap: 28px; }
-.menu a { text-decoration: none; font-weight: 500; transition: color 0.2s; }
-.menu a:hover { color: var(--accent); }
-
-.menu-bouton {
-  background: var(--cacao);
-  color: var(--creme) !important;
-  padding: 9px 20px;
-  border-radius: 50px;
+.menu { display: flex; gap: 26px; }
+.menu a {
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
 }
-.menu-bouton:hover { background: var(--accent); }
+.menu a:hover { color: var(--or); }
 
-.burger { display: none; background: none; border: none; font-size: 1.8rem; color: var(--cacao); cursor: pointer; }
+.logo img { height: 78px; width: auto; }
 
-/* ---------- 4. Boutons ---------- */
+.entete-droite { display: flex; justify-content: flex-end; align-items: center; gap: 12px; }
+
+/* Le tampon rond (idée du "Shop now" de Little Tart) */
+.tampon-commander {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--or-clair);
+  border: 3px solid var(--encre);
+  box-shadow: 4px 4px 0 var(--encre);   /* ombre "dure" décalée, sans flou */
+  font-family: var(--affiche);
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-decoration: none;
+  transform: rotate(-8deg);
+  transition: transform 0.25s;
+}
+.tampon-commander:hover { transform: rotate(0deg) scale(1.05); }
+
+.burger { display: none; background: none; border: none; font-size: 1.9rem; cursor: pointer; color: var(--encre); }
+
+/* ---------- 5. Boutons et liens ---------- */
 .bouton {
   display: inline-block;
-  background: var(--cacao);
-  color: var(--creme);
+  background: var(--encre);
+  color: var(--fond-clair);
+  border: 2px solid var(--encre);
   padding: 14px 30px;
-  border: 2px solid var(--cacao);
-  border-radius: 50px;
-  font: 600 1rem 'Poppins', sans-serif;
+  border-radius: 8px;
+  font: 600 0.85rem var(--texte);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition: 0.3s;
+  box-shadow: 4px 4px 0 var(--or);       /* ombre dorée décalée */
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.bouton:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+.bouton:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--or); }
 
-.bouton-contour { background: transparent; color: var(--cacao); }
-.bouton-contour:hover { color: var(--creme); }
+.bouton-contour { background: transparent; color: var(--encre); box-shadow: none; }
+.bouton-contour:hover { background: var(--encre); color: var(--fond-clair); box-shadow: none; transform: none; }
 
-.bouton-whatsapp { background: var(--vert-whatsapp); border-color: var(--vert-whatsapp); color: white; }
-.bouton-whatsapp:hover { background: #1ebe5b; border-color: #1ebe5b; }
+.bouton-whatsapp { background: var(--whatsapp); border-color: var(--encre); color: var(--encre); box-shadow: 4px 4px 0 var(--encre); }
+.bouton-whatsapp:hover { box-shadow: 6px 6px 0 var(--encre); }
 
-.bouton-petit {
-  background: var(--cacao);
-  color: var(--creme);
+/* Lien avec une petite flèche dessinée en CSS (comme "Shop all →" chez Levain) */
+.lien-fleche {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
   border: none;
-  padding: 9px 18px;
-  border-radius: 50px;
-  font: 500 0.9rem 'Poppins', sans-serif;
+  font: 600 0.8rem var(--texte);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--encre);
   cursor: pointer;
-  transition: 0.3s;
 }
-.bouton-petit:hover { background: var(--accent); }
+.lien-fleche::after {
+  /* ::after = un élément ajouté par le CSS. Ici, un cercle avec une flèche. */
+  content: "→";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid var(--encre);
+  border-radius: 50%;
+  font-size: 0.85rem;
+  transition: transform 0.2s;
+}
+.lien-fleche:hover::after { transform: translateX(4px); }
 
-/* ---------- 5. Accueil ---------- */
+/* ---------- 6. Accueil ---------- */
 .hero {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 50px;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
   align-items: center;
-  padding: 60px 6% 80px;
-  min-height: 85vh;
+  max-width: var(--largeur);
+  margin: 0 auto;
+  padding: 30px 4% 60px;
 }
+
+.hero-visuel {
+  position: relative;
+  aspect-ratio: 1 / 1.02;             /* une boîte presque carrée */
+  border-radius: var(--rayon);
+  border: 2px solid var(--encre);
+  overflow: hidden;
+  /* Nappe à carreaux (idée de Levain) : un dégradé "conique" répété */
+  background:
+    repeating-conic-gradient(var(--rose) 0 25%, var(--fond-clair) 0 50%) 0 0 / 70px 70px;
+}
+
+.hero-pot { position: absolute; filter: drop-shadow(0 10px 12px rgba(31, 23, 18, 0.15)); }
+.hero-pot-1 { width: 64%; left: 6%; bottom: 4%; }
+.hero-pot-2 { width: 44%; right: 4%; bottom: 16%; }
+
+.hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* Le sceau rond qui tourne doucement */
+.sceau {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 120px;
+  animation: tourne 18s linear infinite;
+}
+.sceau text { font-family: var(--affiche); font-size: 12px; fill: var(--encre); }
+@keyframes tourne { to { transform: rotate(360deg); } }
 
 .petit-titre {
-  color: var(--accent);
-  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 600;
   letter-spacing: 2.5px;
-  font-weight: 600;
-  font-size: 0.8rem;
-  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 14px;
 }
 
-.hero h1 { font-size: clamp(2.4rem, 5vw, 4rem); margin-bottom: 22px; }
-/* clamp(min, idéal, max) : la taille s'adapte à l'écran, sans être trop petite ni trop grande */
+.hero h1 { font-size: clamp(2.6rem, 5.4vw, 4.4rem); margin-bottom: 22px; }
+.hero-texte > p:not(.petit-titre) { font-size: 1.05rem; color: var(--texte-doux); max-width: 470px; margin-bottom: 30px; }
+.hero-boutons { display: flex; flex-wrap: wrap; gap: 16px; }
 
-.hero h1 em { color: var(--accent); font-style: italic; }
-
-.hero-texte > p:not(.petit-titre) { font-size: 1.08rem; max-width: 500px; margin-bottom: 32px; color: var(--cafe); }
-
-.hero-boutons { display: flex; flex-wrap: wrap; gap: 12px; }
-
-.hero-image {
-  position: relative;  /* pour pouvoir placer l'étiquette par-dessus */
-  min-height: 460px;
-  border-radius: 200px 200px var(--rayon) var(--rayon); /* forme d'arche en haut */
-  overflow: hidden;
-  /* Dégradé "couches de tiramisu" : cacao, crème, biscuit, café */
-  background: linear-gradient(180deg,
-      #6b4330 0%, #6b4330 8%,
-      var(--mascarpone) 8%, var(--mascarpone) 34%,
-      #e9cfae 34%, #c99b6d 52%,
-      var(--mascarpone) 52%, var(--mascarpone) 76%,
-      #7a4a2e 76%, #3b2418 100%);
-  box-shadow: var(--ombre);
+/* ---------- 7. Bande qui défile (Levain) ---------- */
+.defilant {
+  overflow: hidden;           /* on cache ce qui dépasse */
+  background: var(--fond-clair);
+  border-top: 2px solid var(--encre);
+  border-bottom: 2px solid var(--encre);
+  padding: 14px 0;
 }
-.hero-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-
-.etiquette {
-  position: absolute;    /* placé par rapport à .hero-image */
-  bottom: 24px;
-  left: 24px;
-  background: var(--creme);
-  padding: 10px 18px;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  box-shadow: var(--ombre);
+.defilant-piste {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  width: max-content;          /* la piste est aussi large que tout son texte */
+  animation: defile 32s linear infinite;
 }
+.defilant span {
+  font-family: var(--affiche);
+  font-size: 1.6rem;
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+}
+/* Petit "Ô" doré entre les mots */
+.defilant i {
+  flex-shrink: 0;
+  width: 18px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--or-clair);
+  border: 2.5px solid var(--encre);
+}
+@keyframes defile { to { transform: translateX(-50%); } }
 
-/* ---------- 6. Bandeau d'atouts ---------- */
-.bandeau {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+/* ---------- 8. Sections ---------- */
+.section { max-width: var(--largeur); margin: 0 auto; padding: 90px 4%; }
+.section h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); }
+
+.section-tete {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   gap: 20px;
-  padding: 36px 6%;
-  background: var(--cacao);
-  color: var(--creme);
+  margin-bottom: 36px;
 }
-.atout { border-left: 2px solid var(--accent); padding-left: 16px; }
-.atout strong { display: block; color: var(--biscuit); }
-.atout p { font-size: 0.88rem; line-height: 1.4; }
+.titre-centre { text-align: center; margin-bottom: 46px; }
+.sous-titre { color: var(--texte-doux); margin: -18px 0 34px; max-width: 620px; }
 
-/* ---------- 7. Sections ---------- */
-.section { padding: 90px 6%; text-align: center; }
-.section h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 14px; }
-.sous-titre { color: var(--cafe); margin-bottom: 46px; }
-
-/* ---------- 8. Cartes parfums ---------- */
+/* ---------- 9. Cartes de la carte (Levain) ---------- */
 .grille {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
 }
-
 .carte {
-  background: var(--mascarpone);
+  background: var(--carte);
   border-radius: var(--rayon);
-  overflow: hidden;
-  box-shadow: var(--ombre);
-  text-align: left;
+  padding: 18px 18px 22px;
   transition: transform 0.3s;
 }
 .carte:hover { transform: translateY(-6px); }
 
-.carte-photo {
-  position: relative;
-  height: 210px;
-  background: linear-gradient(180deg, #6b4330 0 10%, var(--mascarpone) 10% 45%, #e9cfae 45% 70%, #7a4a2e 70%);
+.carte-image {
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--fond-clair);
+  margin-bottom: 18px;
 }
-.carte-photo img { width: 100%; height: 100%; object-fit: cover; }
+.carte-image img { width: 100%; height: 100%; object-fit: contain; padding: 6%; transition: transform 0.4s; }
+.carte:hover .carte-image img { transform: scale(1.05) rotate(-2deg); }
 
-.badge {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  background: var(--accent);
-  color: white;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 5px 12px;
-  border-radius: 50px;
-}
-
-.carte-contenu { padding: 22px; }
-.carte-contenu h3 { font-size: 1.45rem; margin-bottom: 6px; }
-.carte-contenu p { font-size: 0.93rem; color: var(--cafe); margin-bottom: 18px; }
-
+.carte h3 { font-size: 1.55rem; margin-bottom: 6px; }
+.carte p { font-size: 0.93rem; color: var(--texte-doux); margin-bottom: 16px; min-height: 3em; }
 .carte-bas { display: flex; justify-content: space-between; align-items: center; }
-.prix { font-weight: 600; color: var(--accent); }
+.prix { font-weight: 600; font-size: 0.9rem; }
 
-
-
-/* ---------- 9. Formats ---------- */
-.formats { background: var(--mascarpone); }
-
-.grille-formats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
-  max-width: 1000px;
-  margin: 40px auto 0;
+/* ---------- 10. Grands mots en relief (Little Tart + enseigne) ---------- */
+.grands-mots {
+  background: var(--rose);
+  border-top: 2px solid var(--encre);
+  border-bottom: 2px solid var(--encre);
+  padding: 70px 4%;
+  text-align: center;
+}
+.mot {
+  font-family: var(--affiche);
+  font-size: clamp(3.4rem, 11vw, 8.5rem);
+  line-height: 0.95;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  -webkit-text-stroke: 2px var(--encre);   /* contour noir des lettres, comme sur l'enseigne */
+}
+/* text-shadow répété = effet de relief en escalier */
+.mot-or {
+  color: var(--or-clair);
+  text-shadow: 2px 2px 0 var(--encre), 4px 4px 0 var(--encre), 6px 6px 0 var(--encre), 8px 8px 0 rgba(31, 23, 18, 0.25);
+}
+.mot-noir {
+  color: var(--encre);
+  text-shadow: 2px 2px 0 var(--or), 4px 4px 0 var(--or), 6px 6px 0 var(--or);
 }
 
-.format {
-  background: var(--creme);
+/* ---------- 11. Formats (panneau coloré, Levain) ---------- */
+.panneau {
+  background: var(--fond-clair);
+  border: 2px solid var(--encre);
   border-radius: var(--rayon);
-  padding: 38px 26px;
-  border: 2px solid transparent;
-  transition: 0.3s;
+  padding: 56px 50px;
 }
-.format:hover { border-color: var(--biscuit); }
-.format-icone { font-size: 2.6rem; margin-bottom: 12px; }
-.format h3 { font-size: 1.4rem; margin-bottom: 10px; }
-.format p { color: var(--cafe); margin-bottom: 16px; font-size: 0.95rem; }
+.panneau h2 { text-align: center; margin-bottom: 40px; }
 
-.format-vedette { background: var(--cacao); color: var(--creme); transform: scale(1.04); }
-.format-vedette p { color: var(--biscuit); }
+.grille-formats { display: grid; grid-template-columns: repeat(3, 1fr); }
+.format { text-align: center; padding: 0 26px; }
+.format + .format { border-left: 1.5px dashed var(--rose-fonce); }  /* trait entre les formats */
+.format h3 { font-size: 1.5rem; margin: 18px 0 8px; }
+.format p { color: var(--texte-doux); font-size: 0.95rem; margin-bottom: 12px; }
+.format .prix { color: var(--or); }
 
-/* ---------- 10. Étapes ---------- */
-.etapes {
-  list-style: none;
+/* Plusieurs petits pots qui se chevauchent */
+.format-pots { display: flex; justify-content: center; align-items: flex-end; height: 150px; }
+.format-pots img { width: 128px; }
+.format-pots img + img { margin-left: -58px; }
+.format-pots-grand img { width: 104px; }
+.format-pots-grand img + img { margin-left: -66px; }
+
+/* ---------- 12. Étapes ---------- */
+.etapes { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
+.numero {
+  display: block;
+  font-family: var(--affiche);
+  font-size: 5.5rem;
+  line-height: 1;
+  color: var(--or-clair);
+  -webkit-text-stroke: 2px var(--encre);
+  text-shadow: 4px 4px 0 var(--encre);
+  margin-bottom: 10px;
+}
+.etapes h3 { font-size: 1.5rem; margin-bottom: 6px; }
+.etapes p { color: var(--texte-doux); max-width: 280px; margin: 0 auto; }
+
+/* ---------- 13. Formulaire de commande ---------- */
+.commande {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1000px;
-  margin: 40px auto 0;
-}
-.etapes span {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;     /* 50% = cercle parfait */
-  background: var(--accent);
-  color: white;
-  font: 700 1.5rem 'Playfair Display', serif;
-  margin-bottom: 14px;
-}
-.etapes h3 { font-size: 1.35rem; margin-bottom: 6px; }
-.etapes p { color: var(--cafe); }
-
-/* ---------- 11. Formulaire de commande ---------- */
-.commande { background: var(--biscuit); }
-
-.commande-boite {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 0.85fr 1.15fr;
   gap: 50px;
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: left;
-  background: var(--mascarpone);
+  background: var(--rose);
+  border: 2px solid var(--encre);
+  border-radius: var(--rayon);
   padding: 50px;
-  border-radius: 30px;
-  box-shadow: var(--ombre);
 }
-.commande-intro p { color: var(--cafe); margin-bottom: 16px; }
-.note { background: var(--creme); padding: 14px 18px; border-radius: 14px; border-left: 4px solid var(--accent); font-size: 0.9rem; }
+.commande-intro p { color: var(--texte-doux); margin: 16px 0; }
+.note { background: var(--fond-clair); border-left: 4px solid var(--or); padding: 12px 16px; border-radius: 8px; font-size: 0.9rem; }
+.commande-pot { width: 62%; margin: 26px auto 0; transform: rotate(-6deg); filter: drop-shadow(0 12px 14px rgba(31, 23, 18, 0.16)); }
 
-.formulaire label { display: block; font-weight: 500; font-size: 0.92rem; margin: 14px 0 6px; }
-
+.formulaire {
+  background: var(--fond-clair);
+  border: 2px solid var(--encre);
+  border-radius: 16px;
+  padding: 30px;
+}
+.formulaire label { display: block; font-weight: 500; font-size: 0.9rem; margin: 14px 0 6px; }
+.formulaire > label:first-child { margin-top: 0; }
 .formulaire input[type="text"],
 .formulaire input[type="number"],
 .formulaire input[type="date"],
@@ -303,152 +383,193 @@ a { color: inherit; }
 .formulaire textarea {
   width: 100%;
   padding: 12px 14px;
-  border: 1.5px solid var(--biscuit);
-  border-radius: 12px;
+  border: 1.5px solid #cdbba5;
+  border-radius: 10px;
   background: white;
-  font: 400 0.95rem 'Poppins', sans-serif;
-  color: var(--cacao);
-  transition: border-color 0.2s;
+  font: 400 0.95rem var(--texte);
+  color: var(--encre);
 }
-.formulaire input:focus, .formulaire select:focus, .formulaire textarea:focus {
-  /* :focus = quand on clique dans le champ */
-  outline: none;
-  border-color: var(--accent);
-}
-
+.formulaire input:focus, .formulaire select:focus, .formulaire textarea:focus { outline: none; border-color: var(--encre); }
 .ligne { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
-.choix-radio { display: flex; gap: 20px; }
+.choix-radio { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .choix-radio label { display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 400; cursor: pointer; }
-
 .formulaire .bouton { width: 100%; margin-top: 24px; }
 
-/* ---------- 12. Événements ---------- */
-.evenements {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
+/* ---------- 14. Occasions (Levain "for every occasion") ---------- */
+.occasions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.occasion {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 150px;
+  padding: 22px;
+  border-radius: var(--rayon);
+  border: 2px solid var(--encre);
+  text-decoration: none;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.occasion span { font-family: var(--titre); font-size: 1.6rem; font-weight: 600; }
+.occasion:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--encre); }
+/* petite flèche en haut à droite de chaque tuile */
+.occasion::after {
+  content: "→";
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  display: flex;
   align-items: center;
-  text-align: left;
+  justify-content: center;
+  border: 1.5px solid var(--encre);
+  border-radius: 50%;
+  background: var(--fond-clair);
 }
-.evenements-texte p:not(.petit-titre) { color: var(--cafe); margin-bottom: 26px; }
-.evenements-liste { display: flex; flex-wrap: wrap; gap: 12px; }
-.evenements-liste span {
-  background: var(--mascarpone);
-  padding: 14px 22px;
-  border-radius: 50px;
-  box-shadow: var(--ombre);
-  font-weight: 500;
-}
+/* :nth-child = on choisit une couleur différente selon la position de la tuile */
+.occasion:nth-child(3n+1) { background: var(--rose); }
+.occasion:nth-child(3n+2) { background: var(--carte); }
+.occasion:nth-child(3n)   { background: var(--or-clair); }
 
-/* ---------- 13. À propos ---------- */
-.apropos {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 60px;
-  align-items: center;
-  text-align: left;
-  background: var(--cacao);
-  color: var(--creme);
-}
-.apropos-image {
-  min-height: 380px;
-  border-radius: var(--rayon) 200px var(--rayon) var(--rayon);
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--accent), var(--cafe));
-}
-.apropos-image { background: #f2efe9; display: flex; align-items: center; }
-.apropos-image img { width: 100%; height: 100%; object-fit: contain; }
-/* contain = l'image entière est visible, sans être coupée (contrairement à cover) */
-.apropos-texte p:not(.petit-titre) { color: var(--biscuit); margin-bottom: 16px; }
-
-/* ---------- 14. FAQ ---------- */
-.faq { max-width: 760px; margin: 40px auto 0; text-align: left; }
-.faq details {
-  background: var(--mascarpone);
+/* ---------- 15. Notre histoire (Cannella) ---------- */
+.histoire { display: grid; grid-template-columns: 0.9fr 1.1fr; align-items: center; }
+.histoire-photo {
+  position: relative;
+  z-index: 2;                 /* la photo passe au-dessus du bloc rose */
+  margin-right: -70px;        /* marge négative : la photo déborde sur le bloc */
+  transform: rotate(-3deg);
+  border: 2px solid var(--encre);
   border-radius: 16px;
-  margin-bottom: 14px;
-  box-shadow: var(--ombre);
   overflow: hidden;
+  background: white;
+  box-shadow: 8px 8px 0 var(--encre);
 }
+.histoire-photo img { width: 100%; }
+.histoire-bloc {
+  background: var(--rose-fonce);
+  border-radius: var(--rayon);
+  padding: 60px 56px 60px 120px;
+}
+.histoire-bloc h2 { margin-bottom: 18px; }
+.histoire-bloc p { margin-bottom: 14px; }
+.histoire-bloc .bouton { margin-top: 10px; }
+
+/* ---------- 16. FAQ ---------- */
+.faq { max-width: 780px; margin: 0 auto; border-top: 2px solid var(--encre); }
+.faq details { border-bottom: 2px solid var(--encre); }
 .faq summary {
-  padding: 20px 24px;
+  padding: 22px 4px;
+  font-family: var(--titre);
+  font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;
-  list-style: none;          /* enlève la petite flèche par défaut */
+  list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
 }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; font-size: 1.5rem; color: var(--accent); transition: transform 0.3s; }
-/* ::after = ajoute un contenu (ici "+") après l'élément, sans toucher au HTML */
-.faq details[open] summary::after { transform: rotate(45deg); }  /* le + devient un × quand c'est ouvert */
-.faq details p { padding: 0 24px 20px; color: var(--cafe); }
+.faq summary::after { content: "+"; font-family: var(--texte); font-size: 1.6rem; transition: transform 0.3s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding: 0 4px 22px; color: var(--texte-doux); }
 
-/* ---------- 15. Contact & pied de page ---------- */
-.contact { background: var(--mascarpone); }
-.contact > p { color: var(--cafe); margin-bottom: 26px; }
-.contact-infos { margin-top: 28px; color: var(--cafe); }
-.contact-infos a { color: var(--accent); font-weight: 500; }
-
+/* ---------- 17. Contact ---------- */
+.contact { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 50px; align-items: center; }
+.contact h2 { margin-bottom: 26px; }
+.contact-ligne { margin-bottom: 18px; }
+.contact-ligne strong {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--or);
+}
+.contact-ligne a { text-decoration-color: var(--or); text-underline-offset: 4px; }
+.contact .hero-boutons { margin-top: 26px; }
 .carte-maps {
-  max-width: 900px;
-  height: 380px;
-  margin: 34px auto 22px;
+  height: 400px;
   border-radius: var(--rayon);
-  overflow: hidden;           /* arrondit aussi les coins de la carte */
-  box-shadow: var(--ombre);
-  border: 3px solid var(--accent);
+  overflow: hidden;
+  border: 2px solid var(--encre);
+  box-shadow: 8px 8px 0 var(--or);
 }
 .carte-maps iframe { width: 100%; height: 100%; border: 0; }
 
-.pied {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding: 28px 6%;
-  background: var(--cacao);
-  color: var(--biscuit);
-  font-size: 0.88rem;
+/* ---------- 18. Pied de page (Cannella) ---------- */
+.pied { background: var(--brun); color: #e9dccb; padding: 56px 4% 26px; }
+.pied-haut {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 60px;
+  align-items: start;
+  max-width: var(--largeur);
+  margin: 0 auto 40px;
 }
-.pied .logo { color: var(--creme); font-size: 1.4rem; }
+.pied .logo img { height: 90px; }
+.pied-menu { display: flex; flex-direction: column; gap: 8px; }
+.pied-menu a { text-decoration: none; font-size: 0.85rem; letter-spacing: 1.2px; text-transform: uppercase; }
+.pied-menu a:hover, .pied-contact a:hover { color: var(--or-clair); }
+.pied-contact p { margin-bottom: 8px; font-size: 0.95rem; }
+.pied-bas {
+  max-width: var(--largeur);
+  margin: 0 auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(233, 220, 203, 0.25);
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
 
-/* ---------- 16. Bouton WhatsApp flottant ---------- */
+/* ---------- 19. Bouton WhatsApp flottant ---------- */
 .whatsapp-flottant {
-  position: fixed;    /* reste au même endroit de l'écran même quand on défile */
+  position: fixed;
   bottom: 22px;
   right: 22px;
   z-index: 60;
-  width: 60px;
-  height: 60px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
-  background: var(--vert-whatsapp);
+  background: var(--whatsapp);
+  border: 2px solid var(--encre);
+  box-shadow: 3px 3px 0 var(--encre);
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
 }
 
-
-/* ---------- 17. Animation d'apparition au défilement ---------- */
-.apparition { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+/* ---------- 20. Apparition au défilement ---------- */
+.apparition { opacity: 0; transform: translateY(26px); transition: opacity 0.7s, transform 0.7s; }
 .apparition.visible { opacity: 1; transform: none; }
-/* script.js ajoute "visible" quand l'élément entre dans l'écran */
+.histoire-photo.apparition.visible { transform: rotate(-3deg); }
 
-/* ---------- 18. Tablette ---------- */
-@media (max-width: 960px) {
-  .bandeau { grid-template-columns: repeat(2, 1fr); }
-  .commande-boite { grid-template-columns: 1fr; padding: 34px 24px; }
-  .evenements, .apropos { grid-template-columns: 1fr; }
+/* Si la personne a demandé moins d'animations dans son téléphone, on les coupe */
+@media (prefers-reduced-motion: reduce) {
+  .sceau, .defilant-piste { animation: none; }
+  .apparition { opacity: 1; transform: none; transition: none; }
 }
 
-/* ---------- 19. Téléphone ---------- */
+/* ---------- 21. Tablette ---------- */
+@media (max-width: 980px) {
+  .menu { gap: 16px; }
+  .menu a { font-size: 0.74rem; }
+  .grille, .occasions { grid-template-columns: repeat(2, 1fr); }
+  .commande, .contact { grid-template-columns: 1fr; }
+  .commande-pot { display: none; }
+  .histoire { grid-template-columns: 1fr; }
+  .histoire-photo { margin: 0 30px -50px; }
+  .histoire-bloc { padding: 90px 36px 44px; }
+}
+
+/* ---------- 22. Téléphone ---------- */
 @media (max-width: 768px) {
+  .annonce { font-size: 0.7rem; letter-spacing: 0.5px; }
+  .annonce-sep { display: none; }
+  .annonce { display: flex; flex-direction: column; gap: 2px; }
+
+  .entete { grid-template-columns: auto 1fr; padding: 8px 5%; }
+  .logo { order: -1; }                 /* le logo passe en premier, à gauche */
+  .logo img { height: 60px; }
+  .tampon-commander { display: none; }  /* sur téléphone : le bouton WhatsApp flottant suffit */
   .burger { display: block; }
-  .logo img { height: 64px; }
 
   .menu {
     display: none;
@@ -457,27 +578,40 @@ a { color: inherit; }
     left: 0;
     right: 0;
     flex-direction: column;
-    gap: 6px;
-    padding: 16px 6% 24px;
-    background: var(--creme);
-    box-shadow: 0 10px 20px rgba(59, 36, 24, 0.08);
+    gap: 4px;
+    padding: 14px 5% 22px;
+    background: var(--fond);
+    border-bottom: 2px solid var(--encre);
   }
   .menu.ouvert { display: flex; }
+  .menu a { font-size: 0.9rem; padding: 8px 0; }
 
-  .hero { grid-template-columns: 1fr; padding-top: 30px; min-height: auto; }
-  .hero-image { min-height: 320px; }
+  .hero { grid-template-columns: 1fr; gap: 34px; padding-top: 16px; }
+  .hero-texte { order: -1; }           /* sur téléphone, le texte avant l'image */
+  .sceau { width: 92px; top: 12px; right: 12px; }
 
-  .section { padding: 70px 6%; }
+  .defilant span { font-size: 1.3rem; }
 
-  .grille-formats, .etapes { grid-template-columns: 1fr; }
-  .format-vedette { transform: none; }
+  .section { padding: 64px 5%; }
+  .section-tete { flex-direction: column; align-items: flex-start; }
+  .grille, .occasions { grid-template-columns: 1fr; }
+  .occasion { min-height: 96px; }
 
+  .panneau { padding: 40px 22px; }
+  .grille-formats { grid-template-columns: 1fr; gap: 34px; }
+  .format { padding: 0; }
+  .format + .format { border-left: none; border-top: 1.5px dashed var(--rose-fonce); padding-top: 30px; }
+
+  .etapes { grid-template-columns: 1fr; gap: 30px; }
+
+  .commande { padding: 30px 18px; }
+  .formulaire { padding: 22px 16px; }
   .ligne { grid-template-columns: 1fr; gap: 0; }
+
+  .histoire-photo { margin: 0 14px -40px; }
+  .histoire-bloc { padding: 76px 24px 36px; }
+
   .carte-maps { height: 300px; }
 
-  .pied { justify-content: center; text-align: center; }
-}
-
-@media (max-width: 480px) {
-  .bandeau { grid-template-columns: 1fr; }
+  .pied-haut { grid-template-columns: 1fr; gap: 26px; }
 }

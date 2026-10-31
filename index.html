@@ -4,184 +4,201 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ô'tiramisu | Pâtisserie à Grand-Bassam</title>
-  <meta name="description" content="Ô'tiramisu, pâtisserie à Grand-Bassam (quartier Château) : tiramisus faits maison, tartes, cookies, muffins, cupcakes, brownies et cakes. Commandez sur WhatsApp.">
+  <meta name="description" content="Ô'tiramisu, pâtisserie du quartier Château à Grand-Bassam : tiramisus faits maison en pots et en boîtes à partager. Commandez sur WhatsApp.">
 
-  <!-- Polices Google : Playfair Display (titres) + Poppins (texte) -->
+  <!-- 3 polices Google :
+       Playfair Display = les titres élégants
+       Bebas Neue      = les grands mots en majuscules (bandeaux, numéros)
+       Poppins         = le texte normal -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <!-- favicon = la petite icône affichée dans l'onglet du navigateur -->
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- ================= EN-TÊTE / MENU ================= -->
+  <!-- ================= BANDEAU D'ANNONCE (tout en haut) ================= -->
+  <div class="annonce">
+    Commandes sur WhatsApp au <a href="tel:+2250719245725">07 19 24 57 25</a>
+    <span class="annonce-sep">·</span>
+    Quartier Château, Grand-Bassam
+  </div>
+
+
+  <!-- ================= EN-TÊTE ================= -->
+  <!-- Menu à gauche, logo au centre, tampon "Commander" à droite -->
   <header class="entete" id="entete">
-    <a href="#accueil" class="logo"><img src="images/logo.png" alt="Ô'tiramisu, les petits sucrés"></a>
-
-    <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
-
     <nav class="menu" id="menu">
-      <a href="#produits">Tiramisus</a>
+      <a href="#produits">La carte</a>
       <a href="#formats">Formats</a>
       <a href="#evenements">Événements</a>
-      <a href="#faq">FAQ</a>
-      <a href="#commander" class="menu-bouton">Commander</a>
+      <a href="#contact">Contact</a>
     </nav>
+
+    <a href="#accueil" class="logo"><img src="images/logo.png" alt="Ô'tiramisu, les petits sucrés"></a>
+
+    <div class="entete-droite">
+      <!-- Le tampon rond, comme un sceau -->
+      <a href="#commander" class="tampon-commander">Commander</a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+    </div>
   </header>
 
 
   <!-- ================= ACCUEIL ================= -->
   <section class="hero" id="accueil">
+
+    <!-- Grande image à gauche. Tant qu'il n'y a pas de photo (images/hero.jpg),
+         on voit les dessins sur la nappe à carreaux. -->
+    <div class="hero-visuel apparition">
+      <img class="hero-pot hero-pot-1" src="images/illus/classique.svg" alt="">
+      <img class="hero-pot hero-pot-2" src="images/illus/fraise.svg" alt="">
+      <img class="hero-photo" src="images/hero.jpg" alt="Tiramisu Ô'tiramisu" onerror="this.remove()">
+      <!-- onerror="this.remove()" : si la photo n'existe pas, on l'enlève et les dessins restent visibles -->
+
+      <!-- Tampon rond qui tourne. <textPath> fait suivre au texte le contour d'un cercle. -->
+      <svg class="sceau" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><path id="cercle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+        <circle cx="60" cy="60" r="58" fill="#e3bf4f" stroke="#1f1712" stroke-width="3"/>
+        <text><textPath href="#cercle" textLength="272" lengthAdjust="spacing">FAIT MAISON · GRAND-BASSAM · FAIT MAISON · GRAND-BASSAM ·</textPath></text>
+        <!-- textLength = on force le texte à faire exactement le tour du cercle -->
+        <circle cx="60" cy="60" r="16" fill="#fffaf2" stroke="#1f1712" stroke-width="3"/>
+      </svg>
+    </div>
+
     <div class="hero-texte apparition">
       <p class="petit-titre">Les petits sucrés · Grand-Bassam</p>
-      <h1>Tiramisus et <em>petits sucrés</em> faits maison</h1>
-      <p>La pâtisserie du quartier Château, à Grand-Bassam. Tiramisus, tartes, cookies, muffins, cupcakes, brownies et cakes, préparés sur place chaque jour. Commandez par WhatsApp ou passez nous voir.</p>
+      <h1>Le tiramisu fait maison de Bassam</h1>
+      <p>En pot individuel, en boîte à partager ou en grand format pour vos fêtes. Commandez en un message, puis passez le récupérer au quartier Château ou faites-vous livrer.</p>
       <div class="hero-boutons">
-        <a href="#commander" class="bouton">Commander maintenant</a>
+        <a href="#commander" class="bouton">Commander</a>
         <a href="#produits" class="bouton bouton-contour">Voir la carte</a>
       </div>
     </div>
+  </section>
 
-    <div class="hero-image apparition">
-      <img src="images/hero.jpg" alt="Tiramisu Ô'tiramisu" onerror="this.style.display='none'">
-      <!-- Petite étiquette posée sur l'image -->
-      <div class="etiquette">Quartier Château, Grand-Bassam</div>
+
+  <!-- ================= BANDE QUI DÉFILE ================= -->
+  <!-- Le texte est écrit 2 fois : quand la 1re moitié sort de l'écran,
+       la 2e a pris sa place, ce qui donne l'impression d'un défilement sans fin. -->
+  <div class="defilant" aria-hidden="true">
+    <div class="defilant-piste">
+      <span>Fait maison</span><i></i><span>Quartier Château</span><i></i><span>Pots individuels</span><i></i><span>Boîtes à partager</span><i></i><span>Commandes pour vos fêtes</span><i></i><span>Grand-Bassam</span><i></i>
+      <span>Fait maison</span><i></i><span>Quartier Château</span><i></i><span>Pots individuels</span><i></i><span>Boîtes à partager</span><i></i><span>Commandes pour vos fêtes</span><i></i><span>Grand-Bassam</span><i></i>
     </div>
-  </section>
+  </div>
 
 
-  <!-- ================= BANDEAU D'ATOUTS ================= -->
-  <section class="bandeau">
-    <div class="atout"><p><strong>Fait maison</strong>Recette préparée à la main</p></div>
-    <div class="atout"><p><strong>Ingrédients choisis</strong>Mascarpone, cacao, vrai café</p></div>
-    <div class="atout"><p><strong>Grand-Bassam</strong>Quartier Château</p></div>
-    <div class="atout"><p><strong>Sur mesure</strong>Pour toutes vos fêtes</p></div>
-  </section>
-
-
-  <!-- ================= PARFUMS ================= -->
+  <!-- ================= LA CARTE ================= -->
   <section class="section" id="produits">
-    <p class="petit-titre">La spécialité de la maison</p>
-    <h2>Nos tiramisus</h2>
-    <p class="sous-titre">Tous nos tiramisus existent en pot individuel et en boîte à partager.</p>
+    <div class="section-tete">
+      <h2>La carte</h2>
+      <a href="#commander" class="lien-fleche">Commander</a>
+    </div>
 
     <div class="grille">
-      <!-- Pour ajouter un parfum : copie un <article> entier et change le texte + le data-parfum. -->
+      <!-- Pour ajouter un parfum : copie un <article> entier et change le texte, l'image et le data-parfum.
+           Photo : mets la photo dans images/ (ex. classique.jpg). Si elle n'existe pas,
+           onerror remplace la photo par le dessin. -->
 
       <article class="carte apparition">
-        <div class="carte-photo">
-          <img src="images/classique.jpg" alt="Tiramisu classique café" onerror="this.style.display='none'">
-        </div>
-        <div class="carte-contenu">
-          <h3>Classique café</h3>
-          <p>La recette originale italienne : biscuits imbibés de café, crème mascarpone, cacao amer.</p>
-          <div class="carte-bas">
-            <span class="prix">Prix sur demande</span> <!-- ⚠️ remplacer par ex. "2 500 FCFA" -->
-            <button class="bouton-petit choisir" data-parfum="Classique café">Choisir</button>
-          </div>
+        <div class="carte-image"><img src="images/classique.jpg" alt="Tiramisu classique café" onerror="this.onerror=null; this.src='images/illus/classique.svg'"></div>
+        <h3>Classique café</h3>
+        <p>Biscuits imbibés de café, crème mascarpone et cacao amer.</p>
+        <div class="carte-bas">
+          <span class="prix">Prix sur demande</span> <!-- ⚠️ remplacer par ex. "2 500 FCFA" -->
+          <button class="lien-fleche choisir" data-parfum="Classique café">Choisir</button>
         </div>
       </article>
 
       <article class="carte apparition">
-        <div class="carte-photo">
-          <img src="images/oreo.jpg" alt="Tiramisu Oreo" onerror="this.style.display='none'">
-        </div>
-        <div class="carte-contenu">
-          <h3>Oreo</h3>
-          <p>Crème vanillée et éclats de biscuits Oreo croquants, pour les gourmands.</p>
-          <div class="carte-bas">
-            <span class="prix">Prix sur demande</span>
-            <button class="bouton-petit choisir" data-parfum="Oreo">Choisir</button>
-          </div>
+        <div class="carte-image"><img src="images/oreo.jpg" alt="Tiramisu Oreo" onerror="this.onerror=null; this.src='images/illus/oreo.svg'"></div>
+        <h3>Oreo</h3>
+        <p>Crème vanillée et éclats de biscuits Oreo.</p>
+        <div class="carte-bas">
+          <span class="prix">Prix sur demande</span>
+          <button class="lien-fleche choisir" data-parfum="Oreo">Choisir</button>
         </div>
       </article>
 
       <article class="carte apparition">
-        <div class="carte-photo">
-          <img src="images/speculoos.jpg" alt="Tiramisu spéculoos" onerror="this.style.display='none'">
-        </div>
-        <div class="carte-contenu">
-          <h3>Spéculoos</h3>
-          <p>Le goût caramélisé et épicé du spéculoos dans une crème généreuse.</p>
-          <div class="carte-bas">
-            <span class="prix">Prix sur demande</span>
-            <button class="bouton-petit choisir" data-parfum="Spéculoos">Choisir</button>
-          </div>
+        <div class="carte-image"><img src="images/speculoos.jpg" alt="Tiramisu spéculoos" onerror="this.onerror=null; this.src='images/illus/speculoos.svg'"></div>
+        <h3>Spéculoos</h3>
+        <p>Le goût caramélisé du spéculoos dans une crème généreuse.</p>
+        <div class="carte-bas">
+          <span class="prix">Prix sur demande</span>
+          <button class="lien-fleche choisir" data-parfum="Spéculoos">Choisir</button>
         </div>
       </article>
 
       <article class="carte apparition">
-        <div class="carte-photo">
-          <img src="images/fraise.jpg" alt="Tiramisu fraise" onerror="this.style.display='none'">
-        </div>
-        <div class="carte-contenu">
-          <h3>Fraise</h3>
-          <p>Fraîcheur et douceur : fraises, biscuits roses et crème mascarpone légère.</p>
-          <div class="carte-bas">
-            <span class="prix">Prix sur demande</span>
-            <button class="bouton-petit choisir" data-parfum="Fraise">Choisir</button>
-          </div>
+        <div class="carte-image"><img src="images/fraise.jpg" alt="Tiramisu fraise" onerror="this.onerror=null; this.src='images/illus/fraise.svg'"></div>
+        <h3>Fraise</h3>
+        <p>Fraises, biscuits roses et crème mascarpone légère.</p>
+        <div class="carte-bas">
+          <span class="prix">Prix sur demande</span>
+          <button class="lien-fleche choisir" data-parfum="Fraise">Choisir</button>
         </div>
       </article>
 
       <article class="carte apparition">
-        <div class="carte-photo">
-          <img src="images/nutella.jpg" alt="Tiramisu chocolat noisette" onerror="this.style.display='none'">
-        </div>
-        <div class="carte-contenu">
-          <h3>Chocolat noisette</h3>
-          <p>Une couche de pâte à tartiner chocolat-noisette au cœur de la crème.</p>
-          <div class="carte-bas">
-            <span class="prix">Prix sur demande</span>
-            <button class="bouton-petit choisir" data-parfum="Chocolat noisette">Choisir</button>
-          </div>
+        <div class="carte-image"><img src="images/chocolat-noisette.jpg" alt="Tiramisu chocolat noisette" onerror="this.onerror=null; this.src='images/illus/chocolat-noisette.svg'"></div>
+        <h3>Chocolat noisette</h3>
+        <p>Une couche chocolat-noisette au cœur de la crème.</p>
+        <div class="carte-bas">
+          <span class="prix">Prix sur demande</span>
+          <button class="lien-fleche choisir" data-parfum="Chocolat noisette">Choisir</button>
         </div>
       </article>
 
       <article class="carte apparition">
-        <div class="carte-photo">
-          <img src="images/mangue.jpg" alt="Tiramisu mangue" onerror="this.style.display='none'">
-        </div>
-        <div class="carte-contenu">
-          <h3>Mangue</h3>
-          <p>Une touche tropicale : mangue fraîche et crème mascarpone.</p>
-          <div class="carte-bas">
-            <span class="prix">Prix sur demande</span>
-            <button class="bouton-petit choisir" data-parfum="Mangue">Choisir</button>
-          </div>
+        <div class="carte-image"><img src="images/mangue.jpg" alt="Tiramisu mangue" onerror="this.onerror=null; this.src='images/illus/mangue.svg'"></div>
+        <h3>Mangue</h3>
+        <p>Mangue fraîche et crème mascarpone.</p>
+        <div class="carte-bas">
+          <span class="prix">Prix sur demande</span>
+          <button class="lien-fleche choisir" data-parfum="Mangue">Choisir</button>
         </div>
       </article>
     </div>
   </section>
 
 
+  <!-- ================= GRANDS MOTS (style enseigne) ================= -->
+  <section class="grands-mots" aria-label="Tiramisu fait maison à Grand-Bassam">
+    <p class="mot mot-or">Tiramisu</p>
+    <p class="mot mot-noir">Fait maison</p>
+    <p class="mot mot-or">À Grand-Bassam</p>
+  </section>
 
 
   <!-- ================= FORMATS ================= -->
-  <section class="section formats" id="formats">
-    <p class="petit-titre">Pour chaque envie</p>
-    <h2>Nos formats</h2>
-
-    <div class="grille-formats">
-      <div class="format apparition">
-        <h3>Pot individuel</h3>
-        <p>Parfait pour une pause gourmande ou un petit cadeau.</p>
-        <span class="prix">Prix sur demande</span>
-      </div>
-      <div class="format format-vedette apparition">
-        <h3>Boîte à partager</h3>
-        <p>Pour 4 à 6 personnes : idéal en famille ou entre amis.</p>
-        <span class="prix">Prix sur demande</span>
-      </div>
-      <div class="format apparition">
-        <h3>Grand format événement</h3>
-        <p>Anniversaires, mariages, baptêmes, entreprises : sur devis.</p>
-        <span class="prix">Sur devis</span>
+  <section class="section" id="formats">
+    <div class="panneau">
+      <h2>Trois formats</h2>
+      <div class="grille-formats">
+        <div class="format apparition">
+          <!-- On réutilise le même dessin plusieurs fois pour montrer la quantité -->
+          <div class="format-pots"><img src="images/illus/classique.svg" alt=""></div>
+          <h3>Pot individuel</h3>
+          <p>Pour une pause gourmande ou un petit cadeau.</p>
+          <span class="prix">Prix sur demande</span>
+        </div>
+        <div class="format apparition">
+          <div class="format-pots"><img src="images/illus/fraise.svg" alt=""><img src="images/illus/classique.svg" alt=""><img src="images/illus/oreo.svg" alt=""></div>
+          <h3>Boîte à partager</h3>
+          <p>Pour 4 à 6 personnes, en famille ou entre amis.</p>
+          <span class="prix">Prix sur demande</span>
+        </div>
+        <div class="format apparition">
+          <div class="format-pots format-pots-grand"><img src="images/illus/mangue.svg" alt=""><img src="images/illus/speculoos.svg" alt=""><img src="images/illus/classique.svg" alt=""><img src="images/illus/chocolat-noisette.svg" alt=""><img src="images/illus/fraise.svg" alt=""></div>
+          <h3>Grand format</h3>
+          <p>Anniversaires, mariages, entreprises : sur devis.</p>
+          <span class="prix">Sur devis</span>
+        </div>
       </div>
     </div>
   </section>
@@ -189,39 +206,32 @@
 
   <!-- ================= COMMENT COMMANDER ================= -->
   <section class="section">
-    <p class="petit-titre">Simple et rapide</p>
-    <h2>Comment commander ?</h2>
-
+    <h2 class="titre-centre">Comment commander</h2>
     <ol class="etapes">
-      <!-- <ol> = liste NUMÉROTÉE (contrairement à <ul>) -->
-      <li class="apparition"><span>1</span><h3>Choisissez</h3><p>Votre parfum, votre format et la quantité.</p></li>
-      <li class="apparition"><span>2</span><h3>Envoyez</h3><p>Remplissez le formulaire : votre commande part directement sur WhatsApp.</p></li>
-      <li class="apparition"><span>3</span><h3>Dégustez</h3><p>On confirme avec vous, puis livraison ou retrait.</p></li>
+      <li class="apparition"><span class="numero">1</span><h3>Choisissez</h3><p>Le parfum, le format et la quantité.</p></li>
+      <li class="apparition"><span class="numero">2</span><h3>Envoyez</h3><p>Le formulaire ouvre WhatsApp avec votre commande déjà écrite.</p></li>
+      <li class="apparition"><span class="numero">3</span><h3>Dégustez</h3><p>On confirme avec vous, puis retrait ou livraison.</p></li>
     </ol>
   </section>
 
 
   <!-- ================= FORMULAIRE DE COMMANDE ================= -->
-  <section class="section commande" id="commander">
-    <div class="commande-boite">
+  <section class="section" id="commander">
+    <div class="commande">
       <div class="commande-intro">
-        <p class="petit-titre">Votre commande</p>
-        <h2>Passez commande</h2>
-        <p>Remplissez ce petit formulaire. En cliquant sur « Envoyer », WhatsApp s'ouvre avec votre message déjà écrit : il ne reste plus qu'à appuyer sur Envoyer.</p>
-        <p class="note">Pour les grosses commandes ou les événements, merci de commander au moins 48 h à l'avance.</p>
+        <h2>Passer commande</h2>
+        <p>Remplissez le formulaire : WhatsApp s'ouvre avec votre message déjà écrit, il ne reste plus qu'à l'envoyer.</p>
+        <p class="note">Pour une boîte à partager ou un événement, commandez au moins 48 h à l'avance.</p>
+        <img class="commande-pot" src="images/illus/speculoos.svg" alt="">
       </div>
 
-      <!-- <form> = un formulaire. id="formulaire" pour le retrouver en JavaScript. -->
       <form id="formulaire" class="formulaire">
-        <!-- <label> = le texte au-dessus du champ. for="nom" le relie au champ qui a id="nom". -->
         <label for="nom">Votre nom</label>
         <input type="text" id="nom" placeholder="Ex : Awa Koné" required>
-        <!-- required = champ obligatoire : le navigateur bloque l'envoi s'il est vide. -->
 
         <div class="ligne">
           <div>
             <label for="parfum">Parfum</label>
-            <!-- <select> = une liste déroulante. Chaque <option> = un choix. -->
             <select id="parfum" required>
               <option value="">Choisir</option>
               <option>Classique café</option>
@@ -239,7 +249,7 @@
             <select id="format" required>
               <option>Pot individuel</option>
               <option>Boîte à partager</option>
-              <option>Grand format événement</option>
+              <option>Grand format</option>
             </select>
           </div>
         </div>
@@ -255,20 +265,19 @@
           </div>
         </div>
 
-        <label>Livraison ou retrait ?</label>
+        <label>Retrait ou livraison ?</label>
         <div class="choix-radio">
-          <!-- type="radio" = on ne peut cocher qu'UN choix parmi ceux qui ont le même name. -->
           <label><input type="radio" name="mode" value="Livraison" checked> Livraison</label>
-          <label><input type="radio" name="mode" value="Retrait sur place"> Retrait sur place</label>
+          <label><input type="radio" name="mode" value="Retrait sur place"> Retrait au quartier Château</label>
         </div>
 
         <div id="zone-adresse">
-          <label for="adresse">Commune / quartier de livraison</label>
-          <input type="text" id="adresse" placeholder="Ex : Mockey-Ville, Quartier France, Impérial...">
+          <label for="adresse">Quartier de livraison</label>
+          <input type="text" id="adresse" placeholder="Ex : Mockey-Ville, Quartier France, Impérial">
         </div>
 
         <label for="message">Un détail à ajouter ? (facultatif)</label>
-        <textarea id="message" rows="3" placeholder="Ex : un message à écrire, une allergie, une heure précise..."></textarea>
+        <textarea id="message" rows="3" placeholder="Ex : un message à écrire, une allergie, une heure précise"></textarea>
 
         <button type="submit" class="bouton bouton-whatsapp">Envoyer ma commande sur WhatsApp</button>
       </form>
@@ -276,58 +285,59 @@
   </section>
 
 
-  <!-- ================= ÉVÉNEMENTS ================= -->
-  <section class="section evenements" id="evenements">
-    <div class="evenements-texte apparition">
-      <p class="petit-titre">Commandes spéciales</p>
-      <h2>Un tiramisu pour chaque fête</h2>
-      <p>Anniversaire, mariage, baptême, fête de fin d'année, réunion d'entreprise : Ô'tiramisu prépare des grands formats et des assortiments de pots personnalisés pour régaler tous vos invités.</p>
-      <a href="#" class="bouton lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour un événement.">Demander un devis</a>
+  <!-- ================= ÉVÉNEMENTS (une tuile par occasion) ================= -->
+  <section class="section" id="evenements">
+    <div class="section-tete">
+      <h2>Pour chaque occasion</h2>
+      <a href="#" class="lien-fleche lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour un événement.">Demander un devis</a>
     </div>
-    <div class="evenements-liste apparition">
-      <span>Anniversaires</span>
-      <span>Mariages</span>
-      <span>Baptêmes</span>
-      <span>Entreprises</span>
-      <span>Fêtes de fin d'année</span>
-      <span>Cadeaux</span>
+    <p class="sous-titre">Grands formats et assortiments de pots pour régaler tous vos invités. Touchez une occasion pour demander un devis.</p>
+
+    <!-- Chaque tuile ouvre WhatsApp avec l'occasion déjà écrite dans le message -->
+    <div class="occasions">
+      <a href="#" class="occasion lien-whatsapp apparition" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour un anniversaire."><span>Anniversaires</span></a>
+      <a href="#" class="occasion lien-whatsapp apparition" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour un mariage."><span>Mariages</span></a>
+      <a href="#" class="occasion lien-whatsapp apparition" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour un baptême."><span>Baptêmes</span></a>
+      <a href="#" class="occasion lien-whatsapp apparition" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour une entreprise."><span>Entreprises</span></a>
+      <a href="#" class="occasion lien-whatsapp apparition" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour les fêtes de fin d'année."><span>Fêtes de fin d'année</span></a>
+      <a href="#" class="occasion lien-whatsapp apparition" data-message="Bonjour Ô'tiramisu, je voudrais offrir des tiramisus en cadeau."><span>Cadeaux</span></a>
     </div>
   </section>
 
 
-  <!-- ================= À PROPOS ================= -->
-  <section class="section apropos" id="apropos">
-    <div class="apropos-image apparition">
-      <img src="images/logo-enseigne.jpg" alt="L'enseigne Ô'tiramisu, les petits sucrés, dans la boutique">
-    </div>
-    <div class="apropos-texte apparition">
-      <p class="petit-titre">Notre histoire</p>
-      <h2>Derrière Ô'tiramisu</h2>
-      <!-- ⚠️ À personnaliser avec la vraie histoire de la dame -->
-      <p>Ô'tiramisu, c'est une pâtisserie de Grand-Bassam née d'une passion : partager des desserts faits maison, préparés à la main avec des ingrédients choisis avec soin. Le tiramisu est la spécialité, mais la vitrine des « petits sucrés » ne s'arrête pas là.</p>
-      <p>Notre conviction : on peut se faire plaisir en mangeant sainement, avec des desserts frais et faits maison, plutôt qu'industriels.</p>
+  <!-- ================= NOTRE HISTOIRE ================= -->
+  <!-- La photo déborde sur le bloc coloré : c'est le "position: relative" + marge négative dans le CSS -->
+  <section class="section" id="histoire">
+    <div class="histoire">
+      <div class="histoire-photo apparition">
+        <img src="images/logo-enseigne.jpg" alt="L'enseigne Ô'tiramisu dans la boutique">
+      </div>
+      <div class="histoire-bloc apparition">
+        <h2>Derrière Ô'tiramisu</h2>
+        <!-- ⚠️ À personnaliser avec le prénom et la vraie histoire de la dame -->
+        <p>Ô'tiramisu est une pâtisserie du quartier Château, à Grand-Bassam. Le tiramisu en est la spécialité, préparé à la main avec des ingrédients choisis avec soin.</p>
+        <p>L'idée de départ est simple : se faire plaisir avec des desserts frais et faits maison plutôt qu'industriels.</p>
+        <a href="#" class="bouton bouton-contour lien-whatsapp" data-message="Bonjour Ô'tiramisu !">Nous écrire</a>
+      </div>
     </div>
   </section>
 
 
   <!-- ================= FAQ ================= -->
   <section class="section" id="faq">
-    <p class="petit-titre">Vos questions</p>
-    <h2>Questions fréquentes</h2>
-
+    <h2 class="titre-centre">Questions fréquentes</h2>
     <div class="faq">
-      <!-- <details> + <summary> = une question qui s'ouvre au clic, SANS JavaScript ! -->
       <details>
         <summary>Combien de temps à l'avance dois-je commander ?</summary>
         <p>Pour quelques pots, la veille suffit généralement. Pour une boîte à partager ou un événement, prévoyez au moins 48 heures.</p>
       </details>
       <details>
-        <summary>Livrez-vous partout ?</summary>
-        <p>Nous sommes au quartier Château, à Grand-Bassam. Nous livrons à Bassam et dans les environs : indiquez votre quartier dans le formulaire et nous vous confirmons la livraison et son coût. Vous pouvez aussi venir récupérer votre commande.</p>
+        <summary>Livrez-vous ?</summary>
+        <p>Nous sommes au quartier Château, à Grand-Bassam. Indiquez votre quartier dans le formulaire : nous vous confirmons la livraison et son coût. Vous pouvez aussi venir récupérer votre commande.</p>
       </details>
       <details>
         <summary>Comment conserver mon tiramisu ?</summary>
-        <p>Toujours au réfrigérateur, et à consommer de préférence dans les 2 à 3 jours. Sortez-le 5 minutes avant de servir.</p>
+        <p>Au réfrigérateur, et à consommer de préférence dans les 2 à 3 jours. Sortez-le 5 minutes avant de servir.</p>
       </details>
       <details>
         <summary>Le tiramisu contient-il de l'alcool ?</summary>
@@ -342,40 +352,54 @@
 
 
   <!-- ================= CONTACT ================= -->
-  <section class="section contact" id="contact">
-    <h2>Une envie de tiramisu ?</h2>
-    <p>Écrivez-nous, on vous répond vite.</p>
-    <a href="#" class="bouton bouton-whatsapp lien-whatsapp" data-message="Bonjour Ô'tiramisu !">Écrire sur WhatsApp</a>
-    <div class="contact-infos">
-      <p><a href="#plan">Quartier Château, Grand-Bassam</a></p>
-      <p><a href="tel:+2250719245725">07 19 24 57 25</a></p>
-      <p><a href="https://www.facebook.com/p/%C3%94tiramisu-61590018016204/" target="_blank" rel="noopener">Suivez-nous sur Facebook</a></p>
-    </div>
+  <section class="section" id="contact">
+    <div class="contact">
+      <div class="contact-texte">
+        <h2>Nous trouver</h2>
+        <p class="contact-ligne"><strong>Adresse</strong>Quartier Château, Grand-Bassam</p>
+        <p class="contact-ligne"><strong>Téléphone et WhatsApp</strong><a href="tel:+2250719245725">07 19 24 57 25</a></p>
+        <p class="contact-ligne"><strong>Facebook</strong><a href="https://www.facebook.com/p/%C3%94tiramisu-61590018016204/" target="_blank" rel="noopener">Ô'tiramisu</a></p>
+        <div class="hero-boutons">
+          <a href="#" class="bouton bouton-whatsapp lien-whatsapp" data-message="Bonjour Ô'tiramisu !">Écrire sur WhatsApp</a>
+          <a href="https://www.google.com/maps/place/%C3%94+Tiramisu/@5.2154394,-3.7309883,19z/data=!4m6!3m5!1s0xfc203003f95c9b7:0xcb44e944c03fcc7f!8m2!3d5.2154621!4d-3.7309776"
+             class="bouton bouton-contour" target="_blank" rel="noopener">Itinéraire</a>
+        </div>
+      </div>
 
-    <!-- Carte Google Maps : <iframe> = une "fenêtre" qui affiche une autre page web dans la nôtre.
-         Les chiffres dans l'adresse sont la latitude et la longitude de la boutique. -->
-    <div class="carte-maps" id="plan">
-      <iframe
-        src="https://www.google.com/maps?q=5.2154621,-3.7309776&z=17&output=embed"
-        title="Plan d'accès Ô'tiramisu, quartier Château, Grand-Bassam"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen></iframe>
+      <!-- Carte Google Maps dans une <iframe> (une page web affichée dans la nôtre) -->
+      <div class="carte-maps" id="plan">
+        <iframe
+          src="https://www.google.com/maps?q=5.2154621,-3.7309776&z=17&output=embed"
+          title="Plan d'accès Ô'tiramisu, quartier Château, Grand-Bassam"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
     </div>
-    <!-- loading="lazy" = la carte ne se charge que quand on arrive dessus : la page reste rapide -->
-    <a href="https://www.google.com/maps/place/%C3%94+Tiramisu/@5.2154394,-3.7309883,19z/data=!4m6!3m5!1s0xfc203003f95c9b7:0xcb44e944c03fcc7f!8m2!3d5.2154621!4d-3.7309776"
-       class="bouton bouton-contour" target="_blank" rel="noopener">Itinéraire vers la boutique</a>
   </section>
 
 
   <!-- ================= PIED DE PAGE ================= -->
   <footer class="pied">
-    <a href="#accueil" class="logo"><img src="images/logo-clair.png" alt="Ô'tiramisu, les petits sucrés"></a>
-    <p>© <span id="annee"></span> Ô'tiramisu, les petits sucrés. Grand-Bassam.</p>
+    <div class="pied-haut">
+      <a href="#accueil" class="logo"><img src="images/logo-clair.png" alt="Ô'tiramisu, les petits sucrés"></a>
+      <nav class="pied-menu">
+        <a href="#produits">La carte</a>
+        <a href="#formats">Formats</a>
+        <a href="#evenements">Événements</a>
+        <a href="#commander">Commander</a>
+      </nav>
+      <div class="pied-contact">
+        <p>Quartier Château, Grand-Bassam</p>
+        <p><a href="tel:+2250719245725">07 19 24 57 25</a></p>
+        <p><a href="https://www.facebook.com/p/%C3%94tiramisu-61590018016204/" target="_blank" rel="noopener">Facebook</a></p>
+      </div>
+    </div>
+    <p class="pied-bas">© <span id="annee"></span> Ô'tiramisu, les petits sucrés</p>
   </footer>
 
 
-  <!-- Bouton WhatsApp flottant, toujours visible en bas à droite -->
+  <!-- Bouton WhatsApp flottant -->
   <a href="#" class="whatsapp-flottant lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais passer une commande." aria-label="Commander sur WhatsApp">
     <svg viewBox="0 0 24 24" width="28" height="28" fill="white" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
   </a>
