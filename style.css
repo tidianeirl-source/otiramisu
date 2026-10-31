@@ -55,8 +55,8 @@ a { color: inherit; }
 /* la classe "defile" est ajoutée par script.js quand on descend dans la page */
 
 .logo { font-size: 1.7rem; font-weight: 700; text-decoration: none; color: var(--cacao); }
-.logo img { height: 58px; width: auto; }
-.pied .logo img { height: 46px; }
+.logo img { height: 66px; width: auto; }
+.pied .logo img { height: 56px; }
 
 .menu { display: flex; align-items: center; gap: 28px; }
 .menu a { text-decoration: none; font-weight: 500; transition: color 0.2s; }
