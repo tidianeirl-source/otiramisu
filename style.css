@@ -45,7 +45,7 @@ a { color: inherit; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 6%;
+  padding: 10px 6%;
   background: rgba(251, 248, 241, 0.92);
   backdrop-filter: blur(8px);         /* flou derrière le menu, effet "verre" */
   transition: box-shadow 0.3s;
@@ -55,8 +55,8 @@ a { color: inherit; }
 /* la classe "defile" est ajoutée par script.js quand on descend dans la page */
 
 .logo { font-size: 1.7rem; font-weight: 700; text-decoration: none; color: var(--cacao); }
-.logo img { height: 66px; width: auto; }
-.pied .logo img { height: 56px; }
+.logo img { height: 84px; width: auto; display: block; }
+.pied .logo img { height: 72px; }
 
 .menu { display: flex; align-items: center; gap: 28px; }
 .menu a { text-decoration: none; font-weight: 500; transition: color 0.2s; }
@@ -448,6 +448,7 @@ a { color: inherit; }
 /* ---------- 19. Téléphone ---------- */
 @media (max-width: 768px) {
   .burger { display: block; }
+  .logo img { height: 64px; }
 
   .menu {
     display: none;
