@@ -110,12 +110,12 @@ formulaire.addEventListener("submit", function (evenement) {
 
   // On construit le texte ligne par ligne. "\n" = retour à la ligne.
   let texte = `Bonjour Ô'tiramisu ! Je voudrais commander :\n\n`;
-  texte += `👤 Nom : ${nom}\n`;
-  texte += `🍰 Parfum : ${parfum}\n`;
-  texte += `📦 Format : ${format}\n`;
-  texte += `🔢 Quantité : ${quantite}\n`;
-  texte += `📅 Pour le : ${date}\n`;
-  texte += `🛵 ${mode}`;
+  texte += `Nom : ${nom}\n`;
+  texte += `Parfum : ${parfum}\n`;
+  texte += `Format : ${format}\n`;
+  texte += `Quantité : ${quantite}\n`;
+  texte += `Pour le : ${date}\n`;
+  texte += `Mode : ${mode}`;
 
   // On ajoute l'adresse seulement si c'est une livraison et qu'elle est remplie
   if (mode === "Livraison" && adresse !== "") {
@@ -123,7 +123,7 @@ formulaire.addEventListener("submit", function (evenement) {
   }
 
   if (message !== "") {
-    texte += `\n📝 Note : ${message}`;
+    texte += `\nNote : ${message}`;
   }
 
   // On ouvre WhatsApp avec le message tout prêt
