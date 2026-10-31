@@ -99,7 +99,6 @@ formulaire.addEventListener("submit", function (evenement) {
   // On récupère ce que la personne a écrit (.value = le contenu d'un champ)
   const nom = document.getElementById("nom").value;
   const parfum = champParfum.value;
-  const format = document.getElementById("format").value;
   const quantite = document.getElementById("quantite").value;
   const mode = document.querySelector('input[name="mode"]:checked').value;
   const adresse = document.getElementById("adresse").value;
@@ -112,8 +111,7 @@ formulaire.addEventListener("submit", function (evenement) {
   let texte = `Bonjour Ô'tiramisu ! Je voudrais commander :\n\n`;
   texte += `Nom : ${nom}\n`;
   texte += `Parfum : ${parfum}\n`;
-  texte += `Format : ${format}\n`;
-  texte += `Quantité : ${quantite}\n`;
+  texte += `Nombre de pots : ${quantite}\n`;
   texte += `Pour le : ${date}\n`;
   texte += `Mode : ${mode}`;
 

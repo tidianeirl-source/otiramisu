@@ -318,29 +318,6 @@ a { color: inherit; }
   text-shadow: 2px 2px 0 var(--or), 4px 4px 0 var(--or), 6px 6px 0 var(--or);
 }
 
-/* ---------- 11. Formats (panneau coloré, Levain) ---------- */
-.panneau {
-  background: var(--fond-clair);
-  border: 2px solid var(--encre);
-  border-radius: var(--rayon);
-  padding: 56px 50px;
-}
-.panneau h2 { text-align: center; margin-bottom: 40px; }
-
-.grille-formats { display: grid; grid-template-columns: repeat(3, 1fr); }
-.format { text-align: center; padding: 0 26px; }
-.format + .format { border-left: 1.5px dashed var(--rose-fonce); }  /* trait entre les formats */
-.format h3 { font-size: 1.5rem; margin: 18px 0 8px; }
-.format p { color: var(--texte-doux); font-size: 0.95rem; margin-bottom: 12px; }
-.format .prix { color: var(--or); }
-
-/* Plusieurs petits pots qui se chevauchent */
-.format-pots { display: flex; justify-content: center; align-items: flex-end; height: 150px; }
-.format-pots img { width: 128px; }
-.format-pots img + img { margin-left: -58px; }
-.format-pots-grand img { width: 104px; }
-.format-pots-grand img + img { margin-left: -66px; }
-
 /* ---------- 12. Étapes ---------- */
 .etapes { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
 .numero {
@@ -614,10 +591,6 @@ a { color: inherit; }
   .grille, .occasions { grid-template-columns: 1fr; }
   .occasion { min-height: 96px; }
 
-  .panneau { padding: 40px 22px; }
-  .grille-formats { grid-template-columns: 1fr; gap: 34px; }
-  .format { padding: 0; }
-  .format + .format { border-left: none; border-top: 1.5px dashed var(--rose-fonce); padding-top: 30px; }
 
   .etapes { grid-template-columns: 1fr; gap: 30px; }
 
