@@ -224,27 +224,6 @@ a { color: inherit; }
 .prix { font-weight: 600; color: var(--accent); }
 
 
-/* ---------- Autres douceurs ---------- */
-.douceurs { background: var(--biscuit); }
-
-.grille-douceurs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.douceur {
-  background: var(--mascarpone);
-  border-radius: var(--rayon);
-  padding: 30px 16px;
-  text-decoration: none;
-  box-shadow: var(--ombre);
-  transition: transform 0.3s;
-}
-.douceur:hover { transform: translateY(-4px); }
-.douceur h3 { font-size: 1.25rem; }
 
 /* ---------- 9. Formats ---------- */
 .formats { background: var(--mascarpone); }
@@ -298,7 +277,6 @@ a { color: inherit; }
 
 /* ---------- 11. Formulaire de commande ---------- */
 .commande { background: var(--biscuit); }
-.douceurs + .formats { background: var(--mascarpone); }
 
 .commande-boite {
   display: grid;
