@@ -14,8 +14,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <!-- APERÇU DE PARTAGE : ce que WhatsApp / Facebook affichent quand on envoie le lien du site.
+       og = "Open Graph", le format lu par ces applications. L'image doit avoir une adresse complète (https://...). -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ô'tiramisu | Tiramisus faits maison à Grand-Bassam">
+  <meta property="og:description" content="Pâtisserie du quartier Château. 1 000 FCFA le pot. Commandes sur WhatsApp.">
+  <meta property="og:image" content="https://tidianeirl-source.github.io/otiramisu/images/apercu-partage.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://tidianeirl-source.github.io/otiramisu/">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
   <!-- ?v=2 : à augmenter (v=3, v=4...) à chaque modification du CSS, pour que les navigateurs ne gardent pas l'ancienne version en mémoire -->
 </head>
 
@@ -292,15 +304,41 @@
   <section class="section" id="histoire">
     <div class="histoire">
       <div class="histoire-photo apparition">
-        <img src="images/logo-enseigne.jpg" alt="L'enseigne Ô'tiramisu dans la boutique">
+        <!-- PHOTO DE LA DAME : mets sa photo dans images/cheffe.jpg.
+             Tant qu'elle n'existe pas, onerror affiche la photo de l'enseigne à la place. -->
+        <img src="images/cheffe.jpg" alt="La créatrice d'Ô'tiramisu" onerror="this.onerror=null; this.src='images/logo-enseigne.jpg'; this.alt='L\'enseigne Ô\'tiramisu dans la boutique'">
       </div>
       <div class="histoire-bloc apparition">
         <h2>Derrière Ô'tiramisu</h2>
+        <!-- ⚠️ Quand tu as son prénom, remplace le titre par par exemple : <h2>Je m'appelle Awa</h2> -->
         <!-- ⚠️ À personnaliser avec le prénom et la vraie histoire de la dame -->
         <p>Ô'tiramisu est une pâtisserie du quartier Château, à Grand-Bassam. Le tiramisu en est la spécialité, préparé à la main avec des ingrédients choisis avec soin.</p>
         <p>L'idée de départ est simple : se faire plaisir avec des desserts frais et faits maison plutôt qu'industriels.</p>
         <a href="#" class="bouton bouton-contour lien-whatsapp" data-message="Bonjour Ô'tiramisu !">Nous écrire</a>
       </div>
+    </div>
+  </section>
+
+
+  <!-- ================= AVIS CLIENTS ================= -->
+  <!-- ⚠️ Section cachée (hidden) tant qu'il n'y a pas de VRAIS avis.
+       Copie les avis depuis Facebook ou Google, avec l'accord des clients, puis supprime le mot hidden.
+       Ne jamais inventer d'avis : c'est trompeur et interdit. -->
+  <section class="section" id="avis" hidden>
+    <h2 class="titre-centre">Ils ont goûté</h2>
+    <div class="avis">
+      <figure class="avis-carte">
+        <blockquote>Texte de l'avis, recopié tel quel.</blockquote>
+        <figcaption>Prénom du client · Facebook</figcaption>
+      </figure>
+      <figure class="avis-carte">
+        <blockquote>Texte de l'avis, recopié tel quel.</blockquote>
+        <figcaption>Prénom du client · Google</figcaption>
+      </figure>
+      <figure class="avis-carte">
+        <blockquote>Texte de l'avis, recopié tel quel.</blockquote>
+        <figcaption>Prénom du client · Facebook</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -340,6 +378,11 @@
         <h2>Nous trouver</h2>
         <p class="contact-ligne"><strong>Adresse</strong>Quartier Château, Grand-Bassam</p>
         <p class="contact-ligne"><strong>Téléphone et WhatsApp</strong><a href="tel:+2250719245725">07 19 24 57 25</a></p>
+        <!-- ⚠️ INFOS À REMPLIR AVEC LA DAME.
+             L'attribut "hidden" cache la ligne. Quand l'info est correcte, supprime le mot hidden. -->
+        <p class="contact-ligne" hidden><strong>Horaires</strong>Du lundi au samedi, de 00 h à 00 h</p>
+        <p class="contact-ligne" hidden><strong>Paiement</strong>Espèces, Wave, Orange Money, MTN MoMo</p>
+        <p class="contact-ligne" hidden><strong>Livraison</strong>Grand-Bassam : 000 FCFA · Environs : 000 FCFA</p>
         <p class="contact-ligne"><strong>Facebook</strong><a href="https://www.facebook.com/p/%C3%94tiramisu-61590018016204/" target="_blank" rel="noopener">Ô'tiramisu</a></p>
         <div class="hero-boutons">
           <a href="#" class="bouton bouton-whatsapp lien-whatsapp" data-message="Bonjour Ô'tiramisu !">Écrire sur WhatsApp</a>
@@ -373,6 +416,7 @@
       </nav>
       <div class="pied-contact">
         <p>Quartier Château, Grand-Bassam</p>
+        <p hidden>Du lundi au samedi, de 00 h à 00 h</p> <!-- ⚠️ horaires : retire hidden une fois rempli -->
         <p><a href="tel:+2250719245725">07 19 24 57 25</a></p>
         <p><a href="https://www.facebook.com/p/%C3%94tiramisu-61590018016204/" target="_blank" rel="noopener">Facebook</a></p>
       </div>
@@ -386,6 +430,6 @@
     <svg viewBox="0 0 24 24" width="28" height="28" fill="white" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
   </a>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>

@@ -455,6 +455,21 @@ a { color: inherit; }
 .histoire-bloc p { margin-bottom: 14px; }
 .histoire-bloc .bouton { margin-top: 10px; }
 
+/* ---------- Avis clients ---------- */
+.avis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.avis-carte {
+  background: var(--fond-clair);
+  border: 2px solid var(--encre);
+  border-radius: var(--rayon);
+  padding: 28px;
+  box-shadow: 6px 6px 0 var(--rose-fonce);
+}
+.avis-carte blockquote { font-family: var(--titre); font-size: 1.15rem; line-height: 1.5; margin-bottom: 16px; }
+.avis-carte blockquote::before { content: "« "; color: var(--or); }
+.avis-carte blockquote::after { content: " »"; color: var(--or); }
+.avis-carte figcaption { font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--texte-doux); }
+@media (max-width: 768px) { .avis { grid-template-columns: 1fr; } }
+
 /* ---------- 16. FAQ ---------- */
 .faq { max-width: 780px; margin: 0 auto; border-top: 2px solid var(--encre); }
 .faq details { border-bottom: 2px solid var(--encre); }
