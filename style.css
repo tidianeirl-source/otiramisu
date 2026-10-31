@@ -264,10 +264,12 @@ a { color: inherit; }
 /* ---------- 9. Cartes de la carte (Levain) ---------- */
 .grille {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);   /* 4 parfums = 4 colonnes */
   gap: 26px;
 }
 .carte {
+  display: flex;              /* en colonne : le bas de carte (prix) reste aligné */
+  flex-direction: column;
   background: var(--carte);
   border-radius: var(--rayon);
   padding: 18px 18px 22px;
@@ -287,7 +289,7 @@ a { color: inherit; }
 
 .carte h3 { font-size: 1.55rem; margin-bottom: 6px; }
 .carte p { font-size: 0.93rem; color: var(--texte-doux); margin-bottom: 16px; min-height: 3em; }
-.carte-bas { display: flex; justify-content: space-between; align-items: center; }
+.carte-bas { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
 .prix { font-weight: 600; font-size: 0.9rem; }
 
 /* ---------- 10. Grands mots en relief (Little Tart + enseigne) ---------- */
