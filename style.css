@@ -1,0 +1,497 @@
+/* ============================================================
+   style.css — L'APPARENCE du site
+   Règle :  sélecteur { propriété: valeur; }
+   .nom = class="nom"   |   #nom = id="nom"   |   h1 = balise h1
+   ============================================================ */
+
+/* ---------- 1. Couleurs et réglages (variables) ---------- */
+:root {
+  /* Couleurs inspirées du logo d'Ô'tiramisu : rose + chocolat */
+  --cacao: #3d2219;      /* chocolat foncé (textes, fonds sombres) */
+  --cafe: #7a4a3a;       /* marron doux (textes secondaires) */
+  --creme: #fdf2f4;      /* rose très clair (fond du site) */
+  --mascarpone: #fffafb; /* blanc rosé (cartes) */
+  --biscuit: #f6d3dc;    /* rose poudré */
+  --accent: #d94f7a;     /* rose framboise (boutons, mots en couleur) */
+  --vert-whatsapp: #25d366;
+  --rayon: 22px;
+  --ombre: 0 10px 30px rgba(61, 34, 25, 0.09);
+}
+
+/* ---------- 2. Base ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+/* scroll-padding-top : quand on clique sur le menu, la section ne se cache pas sous l'en-tête */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--creme);
+  color: var(--cacao);
+  line-height: 1.65;
+}
+
+h1, h2, h3, .logo { font-family: 'Playfair Display', serif; line-height: 1.15; }
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+/* ---------- 3. En-tête ---------- */
+.entete {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 6%;
+  background: rgba(253, 242, 244, 0.92);
+  backdrop-filter: blur(8px);         /* flou derrière le menu, effet "verre" */
+  transition: box-shadow 0.3s;
+}
+
+.entete.defile { box-shadow: 0 4px 20px rgba(59, 36, 24, 0.08); }
+/* la classe "defile" est ajoutée par script.js quand on descend dans la page */
+
+.logo { font-size: 1.7rem; font-weight: 700; text-decoration: none; color: var(--cacao); }
+.logo span { color: var(--accent); }
+
+.menu { display: flex; align-items: center; gap: 28px; }
+.menu a { text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.menu a:hover { color: var(--accent); }
+
+.menu-bouton {
+  background: var(--cacao);
+  color: var(--creme) !important;
+  padding: 9px 20px;
+  border-radius: 50px;
+}
+.menu-bouton:hover { background: var(--accent); }
+
+.burger { display: none; background: none; border: none; font-size: 1.8rem; color: var(--cacao); cursor: pointer; }
+
+/* ---------- 4. Boutons ---------- */
+.bouton {
+  display: inline-block;
+  background: var(--cacao);
+  color: var(--creme);
+  padding: 14px 30px;
+  border: 2px solid var(--cacao);
+  border-radius: 50px;
+  font: 600 1rem 'Poppins', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.bouton:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+
+.bouton-contour { background: transparent; color: var(--cacao); }
+.bouton-contour:hover { color: var(--creme); }
+
+.bouton-whatsapp { background: var(--vert-whatsapp); border-color: var(--vert-whatsapp); color: white; }
+.bouton-whatsapp:hover { background: #1ebe5b; border-color: #1ebe5b; }
+
+.bouton-petit {
+  background: var(--cacao);
+  color: var(--creme);
+  border: none;
+  padding: 9px 18px;
+  border-radius: 50px;
+  font: 500 0.9rem 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.bouton-petit:hover { background: var(--accent); }
+
+/* ---------- 5. Accueil ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  padding: 60px 6% 80px;
+  min-height: 85vh;
+}
+
+.petit-titre {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.hero h1 { font-size: clamp(2.4rem, 5vw, 4rem); margin-bottom: 22px; }
+/* clamp(min, idéal, max) : la taille s'adapte à l'écran, sans être trop petite ni trop grande */
+
+.hero h1 em { color: var(--accent); font-style: italic; }
+
+.hero-texte > p:not(.petit-titre) { font-size: 1.08rem; max-width: 500px; margin-bottom: 32px; color: var(--cafe); }
+
+.hero-boutons { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.hero-image {
+  position: relative;  /* pour pouvoir placer l'étiquette par-dessus */
+  min-height: 460px;
+  border-radius: 200px 200px var(--rayon) var(--rayon); /* forme d'arche en haut */
+  overflow: hidden;
+  /* Dégradé "couches de tiramisu" : cacao, crème, biscuit, café */
+  background: linear-gradient(180deg,
+      #6b4330 0%, #6b4330 8%,
+      var(--mascarpone) 8%, var(--mascarpone) 34%,
+      var(--biscuit) 34%, #c99b6d 52%,
+      var(--mascarpone) 52%, var(--mascarpone) 76%,
+      var(--cafe) 76%, var(--cacao) 100%);
+  box-shadow: var(--ombre);
+}
+.hero-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.etiquette {
+  position: absolute;    /* placé par rapport à .hero-image */
+  bottom: 24px;
+  left: 24px;
+  background: var(--creme);
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: var(--ombre);
+}
+
+/* ---------- 6. Bandeau d'atouts ---------- */
+.bandeau {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 36px 6%;
+  background: var(--cacao);
+  color: var(--creme);
+}
+.atout { display: flex; align-items: center; gap: 14px; }
+.atout span { font-size: 2rem; }
+.atout strong { display: block; color: var(--biscuit); }
+.atout p { font-size: 0.88rem; line-height: 1.4; }
+
+/* ---------- 7. Sections ---------- */
+.section { padding: 90px 6%; text-align: center; }
+.section h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 14px; }
+.sous-titre { color: var(--cafe); margin-bottom: 46px; }
+
+/* ---------- 8. Cartes parfums ---------- */
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carte {
+  background: var(--mascarpone);
+  border-radius: var(--rayon);
+  overflow: hidden;
+  box-shadow: var(--ombre);
+  text-align: left;
+  transition: transform 0.3s;
+}
+.carte:hover { transform: translateY(-6px); }
+
+.carte-photo {
+  position: relative;
+  height: 210px;
+  background: linear-gradient(180deg, #6b4330 0 10%, var(--mascarpone) 10% 45%, var(--biscuit) 45% 70%, var(--cafe) 70%);
+}
+.carte-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 50px;
+}
+
+.carte-contenu { padding: 22px; }
+.carte-contenu h3 { font-size: 1.45rem; margin-bottom: 6px; }
+.carte-contenu p { font-size: 0.93rem; color: var(--cafe); margin-bottom: 18px; }
+
+.carte-bas { display: flex; justify-content: space-between; align-items: center; }
+.prix { font-weight: 600; color: var(--accent); }
+
+
+/* ---------- Autres douceurs ---------- */
+.douceurs { background: var(--biscuit); }
+
+.grille-douceurs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.douceur {
+  background: var(--mascarpone);
+  border-radius: var(--rayon);
+  padding: 30px 16px;
+  text-decoration: none;
+  box-shadow: var(--ombre);
+  transition: transform 0.3s;
+}
+.douceur:hover { transform: translateY(-6px) rotate(-1deg); }
+.douceur span { font-size: 2.6rem; display: block; margin-bottom: 8px; }
+.douceur h3 { font-size: 1.25rem; }
+
+/* ---------- 9. Formats ---------- */
+.formats { background: var(--mascarpone); }
+
+.grille-formats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  max-width: 1000px;
+  margin: 40px auto 0;
+}
+
+.format {
+  background: var(--creme);
+  border-radius: var(--rayon);
+  padding: 38px 26px;
+  border: 2px solid transparent;
+  transition: 0.3s;
+}
+.format:hover { border-color: var(--biscuit); }
+.format-icone { font-size: 2.6rem; margin-bottom: 12px; }
+.format h3 { font-size: 1.4rem; margin-bottom: 10px; }
+.format p { color: var(--cafe); margin-bottom: 16px; font-size: 0.95rem; }
+
+.format-vedette { background: var(--cacao); color: var(--creme); transform: scale(1.04); }
+.format-vedette p { color: var(--biscuit); }
+
+/* ---------- 10. Étapes ---------- */
+.etapes {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 40px auto 0;
+}
+.etapes span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;     /* 50% = cercle parfait */
+  background: var(--accent);
+  color: white;
+  font: 700 1.5rem 'Playfair Display', serif;
+  margin-bottom: 14px;
+}
+.etapes h3 { font-size: 1.35rem; margin-bottom: 6px; }
+.etapes p { color: var(--cafe); }
+
+/* ---------- 11. Formulaire de commande ---------- */
+.commande { background: var(--biscuit); }
+.douceurs + .formats { background: var(--mascarpone); }
+
+.commande-boite {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+  background: var(--mascarpone);
+  padding: 50px;
+  border-radius: 30px;
+  box-shadow: var(--ombre);
+}
+.commande-intro p { color: var(--cafe); margin-bottom: 16px; }
+.note { background: var(--creme); padding: 14px 18px; border-radius: 14px; border-left: 4px solid var(--accent); font-size: 0.9rem; }
+
+.formulaire label { display: block; font-weight: 500; font-size: 0.92rem; margin: 14px 0 6px; }
+
+.formulaire input[type="text"],
+.formulaire input[type="number"],
+.formulaire input[type="date"],
+.formulaire select,
+.formulaire textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--biscuit);
+  border-radius: 12px;
+  background: white;
+  font: 400 0.95rem 'Poppins', sans-serif;
+  color: var(--cacao);
+  transition: border-color 0.2s;
+}
+.formulaire input:focus, .formulaire select:focus, .formulaire textarea:focus {
+  /* :focus = quand on clique dans le champ */
+  outline: none;
+  border-color: var(--accent);
+}
+
+.ligne { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.choix-radio { display: flex; gap: 20px; }
+.choix-radio label { display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 400; cursor: pointer; }
+
+.formulaire .bouton { width: 100%; margin-top: 24px; }
+
+/* ---------- 12. Événements ---------- */
+.evenements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  text-align: left;
+}
+.evenements-texte p:not(.petit-titre) { color: var(--cafe); margin-bottom: 26px; }
+.evenements-liste { display: flex; flex-wrap: wrap; gap: 12px; }
+.evenements-liste span {
+  background: var(--mascarpone);
+  padding: 14px 22px;
+  border-radius: 50px;
+  box-shadow: var(--ombre);
+  font-weight: 500;
+}
+
+/* ---------- 13. À propos ---------- */
+.apropos {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  text-align: left;
+  background: var(--cacao);
+  color: var(--creme);
+}
+.apropos-image {
+  min-height: 380px;
+  border-radius: var(--rayon) 200px var(--rayon) var(--rayon);
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--accent), var(--cafe));
+}
+.apropos-image img { width: 100%; height: 100%; object-fit: cover; }
+.apropos-texte p:not(.petit-titre) { color: var(--biscuit); margin-bottom: 16px; }
+
+/* ---------- 14. FAQ ---------- */
+.faq { max-width: 760px; margin: 40px auto 0; text-align: left; }
+.faq details {
+  background: var(--mascarpone);
+  border-radius: 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--ombre);
+  overflow: hidden;
+}
+.faq summary {
+  padding: 20px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;          /* enlève la petite flèche par défaut */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-size: 1.5rem; color: var(--accent); transition: transform 0.3s; }
+/* ::after = ajoute un contenu (ici "+") après l'élément, sans toucher au HTML */
+.faq details[open] summary::after { transform: rotate(45deg); }  /* le + devient un × quand c'est ouvert */
+.faq details p { padding: 0 24px 20px; color: var(--cafe); }
+
+/* ---------- 15. Contact & pied de page ---------- */
+.contact { background: var(--mascarpone); }
+.contact > p { color: var(--cafe); margin-bottom: 26px; }
+.contact-infos { margin-top: 28px; color: var(--cafe); }
+.contact-infos a { color: var(--accent); font-weight: 500; }
+
+.pied {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 28px 6%;
+  background: var(--cacao);
+  color: var(--biscuit);
+  font-size: 0.88rem;
+}
+.pied .logo { color: var(--creme); font-size: 1.4rem; }
+
+/* ---------- 16. Bouton WhatsApp flottant ---------- */
+.whatsapp-flottant {
+  position: fixed;    /* reste au même endroit de l'écran même quand on défile */
+  bottom: 22px;
+  right: 22px;
+  z-index: 60;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--vert-whatsapp);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+  animation: pulse 2.5s infinite;
+}
+
+/* @keyframes = une animation qu'on définit nous-mêmes */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* ---------- 17. Animation d'apparition au défilement ---------- */
+.apparition { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+.apparition.visible { opacity: 1; transform: none; }
+/* script.js ajoute "visible" quand l'élément entre dans l'écran */
+
+/* ---------- 18. Tablette ---------- */
+@media (max-width: 960px) {
+  .bandeau { grid-template-columns: repeat(2, 1fr); }
+  .commande-boite { grid-template-columns: 1fr; padding: 34px 24px; }
+  .evenements, .apropos { grid-template-columns: 1fr; }
+}
+
+/* ---------- 19. Téléphone ---------- */
+@media (max-width: 768px) {
+  .burger { display: block; }
+
+  .menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 6% 24px;
+    background: var(--creme);
+    box-shadow: 0 10px 20px rgba(59, 36, 24, 0.08);
+  }
+  .menu.ouvert { display: flex; }
+
+  .hero { grid-template-columns: 1fr; padding-top: 30px; min-height: auto; }
+  .hero-image { min-height: 320px; }
+
+  .section { padding: 70px 6%; }
+
+  .grille-formats, .etapes { grid-template-columns: 1fr; }
+  .format-vedette { transform: none; }
+
+  .ligne { grid-template-columns: 1fr; gap: 0; }
+
+  .pied { justify-content: center; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .bandeau { grid-template-columns: 1fr; }
+}
