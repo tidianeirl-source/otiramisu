@@ -6,16 +6,16 @@
 
 /* ---------- 1. Couleurs et réglages (variables) ---------- */
 :root {
-  /* Couleurs inspirées du logo d'Ô'tiramisu : rose + chocolat */
-  --cacao: #3d2219;      /* chocolat foncé (textes, fonds sombres) */
-  --cafe: #7a4a3a;       /* marron doux (textes secondaires) */
-  --creme: #fdf2f4;      /* rose très clair (fond du site) */
-  --mascarpone: #fffafb; /* blanc rosé (cartes) */
-  --biscuit: #f6d3dc;    /* rose poudré */
-  --accent: #d94f7a;     /* rose framboise (boutons, mots en couleur) */
+  /* Couleurs de l'enseigne Ô'tiramisu : or + noir sur blanc, avec un rappel rose (fleurs de la boutique) */
+  --cacao: #1f1a14;      /* noir chaud (textes, fonds sombres) */
+  --cafe: #6b5a3e;       /* brun doré (textes secondaires) */
+  --creme: #fbf8f1;      /* blanc cassé (fond du site) */
+  --mascarpone: #fffdf8; /* blanc (cartes) */
+  --biscuit: #f4e4e7;    /* rose poudré, comme les fleurs de la boutique */
+  --accent: #b8941f;     /* or de l'enseigne (boutons, mots en couleur) */
   --vert-whatsapp: #25d366;
   --rayon: 22px;
-  --ombre: 0 10px 30px rgba(61, 34, 25, 0.09);
+  --ombre: 0 10px 30px rgba(31, 26, 20, 0.09);
 }
 
 /* ---------- 2. Base ---------- */
@@ -46,7 +46,7 @@ a { color: inherit; }
   justify-content: space-between;
   align-items: center;
   padding: 16px 6%;
-  background: rgba(253, 242, 244, 0.92);
+  background: rgba(251, 248, 241, 0.92);
   backdrop-filter: blur(8px);         /* flou derrière le menu, effet "verre" */
   transition: box-shadow 0.3s;
 }
@@ -141,9 +141,9 @@ a { color: inherit; }
   background: linear-gradient(180deg,
       #6b4330 0%, #6b4330 8%,
       var(--mascarpone) 8%, var(--mascarpone) 34%,
-      var(--biscuit) 34%, #c99b6d 52%,
+      #e9cfae 34%, #c99b6d 52%,
       var(--mascarpone) 52%, var(--mascarpone) 76%,
-      var(--cafe) 76%, var(--cacao) 100%);
+      #7a4a2e 76%, #3b2418 100%);
   box-shadow: var(--ombre);
 }
 .hero-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -201,7 +201,7 @@ a { color: inherit; }
 .carte-photo {
   position: relative;
   height: 210px;
-  background: linear-gradient(180deg, #6b4330 0 10%, var(--mascarpone) 10% 45%, var(--biscuit) 45% 70%, var(--cafe) 70%);
+  background: linear-gradient(180deg, #6b4330 0 10%, var(--mascarpone) 10% 45%, #e9cfae 45% 70%, #7a4a2e 70%);
 }
 .carte-photo img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -380,7 +380,9 @@ a { color: inherit; }
   overflow: hidden;
   background: linear-gradient(135deg, var(--accent), var(--cafe));
 }
-.apropos-image img { width: 100%; height: 100%; object-fit: cover; }
+.apropos-image { background: #f2efe9; display: flex; align-items: center; }
+.apropos-image img { width: 100%; height: 100%; object-fit: contain; }
+/* contain = l'image entière est visible, sans être coupée (contrairement à cover) */
 .apropos-texte p:not(.petit-titre) { color: var(--biscuit); margin-bottom: 16px; }
 
 /* ---------- 14. FAQ ---------- */
