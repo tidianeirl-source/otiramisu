@@ -27,7 +27,7 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
   <!-- ?v=2 : à augmenter (v=3, v=4...) à chaque modification du CSS, pour que les navigateurs ne gardent pas l'ancienne version en mémoire -->
 </head>
 
@@ -54,7 +54,7 @@
 
     <div class="entete-droite">
       <!-- Le tampon rond, comme un sceau -->
-      <a href="#commander" class="tampon-commander">Commander</a>
+      <a href="#commander" class="tampon-commander">Commander<span class="pastille" id="pastille" hidden>0</span></a>
       <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
     </div>
   </header>
@@ -112,7 +112,9 @@
     </div>
 
     <div class="grille">
-      <!-- Pour ajouter un parfum : copie un <article> entier et change le texte, l'image et le data-parfum.
+      <!-- Pour ajouter un parfum : copie un <article> entier et change le texte, l'image et le data-parfum
+           (le data-parfum est écrit 3 fois dans le compteur : garde le même nom partout).
+           Le panier du formulaire se remplit tout seul à partir de ces cartes.
            Photo : mets la photo dans images/ (ex. classique.jpg). Si elle n'existe pas,
            onerror remplace la photo par le dessin. -->
 
@@ -122,7 +124,11 @@
         <p>Biscuits imbibés de café, crème mascarpone et cacao amer.</p>
         <div class="carte-bas">
           <span class="prix">1 000 FCFA</span> <!-- prix du pot : à changer ici si besoin -->
-          <button class="lien-fleche choisir" data-parfum="Classique café">Choisir</button>
+          <div class="compteur" data-parfum="Classique café">
+            <button type="button" class="moins" aria-label="Retirer un pot Classique café">−</button>
+            <span class="nombre">0</span>
+            <button type="button" class="plus" aria-label="Ajouter un pot Classique café">+</button>
+          </div>
         </div>
       </article>
 
@@ -132,7 +138,11 @@
         <p>Crème vanillée et éclats de biscuits Oreo.</p>
         <div class="carte-bas">
           <span class="prix">1 000 FCFA</span>
-          <button class="lien-fleche choisir" data-parfum="Oreo">Choisir</button>
+          <div class="compteur" data-parfum="Oreo">
+            <button type="button" class="moins" aria-label="Retirer un pot Oreo">−</button>
+            <span class="nombre">0</span>
+            <button type="button" class="plus" aria-label="Ajouter un pot Oreo">+</button>
+          </div>
         </div>
       </article>
 
@@ -142,7 +152,11 @@
         <p>Le goût caramélisé du spéculoos dans une crème généreuse.</p>
         <div class="carte-bas">
           <span class="prix">1 000 FCFA</span>
-          <button class="lien-fleche choisir" data-parfum="Spéculoos">Choisir</button>
+          <div class="compteur" data-parfum="Spéculoos">
+            <button type="button" class="moins" aria-label="Retirer un pot Spéculoos">−</button>
+            <span class="nombre">0</span>
+            <button type="button" class="plus" aria-label="Ajouter un pot Spéculoos">+</button>
+          </div>
         </div>
       </article>
 
@@ -155,7 +169,11 @@
         <p>Crème mascarpone et coulis de fruit de la passion, acidulé et frais.</p>
         <div class="carte-bas">
           <span class="prix">1 000 FCFA</span>
-          <button class="lien-fleche choisir" data-parfum="Passion">Choisir</button>
+          <div class="compteur" data-parfum="Passion">
+            <button type="button" class="moins" aria-label="Retirer un pot Passion">−</button>
+            <span class="nombre">0</span>
+            <button type="button" class="plus" aria-label="Ajouter un pot Passion">+</button>
+          </div>
         </div>
       </article>
 
@@ -165,7 +183,11 @@
         <p>Crème mascarpone et morceaux de mangue.</p>
         <div class="carte-bas">
           <span class="prix">1 000 FCFA</span>
-          <button class="lien-fleche choisir" data-parfum="Mangue">Choisir</button>
+          <div class="compteur" data-parfum="Mangue">
+            <button type="button" class="moins" aria-label="Retirer un pot Mangue">−</button>
+            <span class="nombre">0</span>
+            <button type="button" class="plus" aria-label="Ajouter un pot Mangue">+</button>
+          </div>
         </div>
       </article>
 
@@ -175,7 +197,11 @@
         <p>Crème mascarpone et morceaux d'ananas.</p>
         <div class="carte-bas">
           <span class="prix">1 000 FCFA</span>
-          <button class="lien-fleche choisir" data-parfum="Ananas">Choisir</button>
+          <div class="compteur" data-parfum="Ananas">
+            <button type="button" class="moins" aria-label="Retirer un pot Ananas">−</button>
+            <span class="nombre">0</span>
+            <button type="button" class="plus" aria-label="Ajouter un pot Ananas">+</button>
+          </div>
         </div>
       </article>
 
@@ -185,7 +211,11 @@
         <p>Crème mascarpone au citron, fraîche et acidulée.</p>
         <div class="carte-bas">
           <span class="prix">1 000 FCFA</span>
-          <button class="lien-fleche choisir" data-parfum="Citron">Choisir</button>
+          <div class="compteur" data-parfum="Citron">
+            <button type="button" class="moins" aria-label="Retirer un pot Citron">−</button>
+            <span class="nombre">0</span>
+            <button type="button" class="plus" aria-label="Ajouter un pot Citron">+</button>
+          </div>
         </div>
       </article>
 
@@ -195,32 +225,21 @@
         <p>Vous choisissez les parfums et la décoration, on le prépare à votre goût.</p>
         <div class="carte-bas">
           <span class="prix">1 000 FCFA</span>
-          <button class="lien-fleche choisir" data-parfum="Personnalisé">Composer</button>
+          <div class="compteur" data-parfum="Personnalisé">
+            <button type="button" class="moins" aria-label="Retirer un pot Personnalisé">−</button>
+            <span class="nombre">0</span>
+            <button type="button" class="plus" aria-label="Ajouter un pot Personnalisé">+</button>
+          </div>
         </div>
       </article>
     </div>
   </section>
 
 
-  <!-- ================= GRANDS MOTS (style enseigne) ================= -->
-  <section class="grands-mots" aria-label="Tiramisu fait maison à Grand-Bassam">
-    <p class="mot mot-or">Tiramisu</p>
-    <p class="mot mot-noir">Fait maison</p>
-    <p class="mot mot-or">À Grand-Bassam</p>
-  </section>
 
 
 
 
-  <!-- ================= COMMENT COMMANDER ================= -->
-  <section class="section">
-    <h2 class="titre-centre">Comment commander</h2>
-    <ol class="etapes">
-      <li class="apparition"><span class="numero">1</span><h3>Choisissez</h3><p>Le parfum et le nombre de pots.</p></li>
-      <li class="apparition"><span class="numero">2</span><h3>Envoyez</h3><p>Le formulaire ouvre WhatsApp avec votre commande déjà écrite.</p></li>
-      <li class="apparition"><span class="numero">3</span><h3>Dégustez</h3><p>On confirme avec vous, puis retrait ou livraison.</p></li>
-    </ol>
-  </section>
 
 
   <!-- ================= FORMULAIRE DE COMMANDE ================= -->
@@ -228,7 +247,7 @@
     <div class="commande">
       <div class="commande-intro">
         <h2>Passer commande</h2>
-        <p>Remplissez le formulaire : WhatsApp s'ouvre avec votre message déjà écrit, il ne reste plus qu'à l'envoyer.</p>
+        <p>Choisissez vos pots avec les boutons + (sur la carte ou ici), remplissez le formulaire : WhatsApp s'ouvre avec votre commande et le total déjà écrits.</p>
         <p class="note">Pour une grosse commande ou un événement, commandez au moins 48 h à l'avance.</p>
         <img class="commande-pot" src="images/illus/speculoos.svg" alt="">
       </div>
@@ -237,30 +256,14 @@
         <label for="nom">Votre nom</label>
         <input type="text" id="nom" placeholder="Ex : Awa Koné" required>
 
-        <label for="parfum">Parfum</label>
-        <select id="parfum" required>
-          <option value="">Choisir</option>
-          <option>Classique café</option>
-          <option>Oreo</option>
-          <option>Spéculoos</option>
-          <option>Passion</option>
-          <option>Mangue</option>
-          <option>Ananas</option>
-          <option>Citron</option>
-          <option>Personnalisé</option>
-          <option>Autre douceur (tarte, cookies, muffins, cupcakes, brownies, cake)</option>
-        </select>
+        <!-- LE PANIER : script.js le remplit automatiquement avec tous les parfums de la carte -->
+        <p class="label">Votre commande</p>
+        <div class="panier" id="panier"></div>
+        <p class="panier-total">Total : <strong id="total">0 pot · 0 FCFA</strong></p>
+        <p class="panier-erreur" id="panier-erreur" hidden>Ajoutez au moins un pot avec les boutons +.</p>
 
-        <div class="ligne">
-          <div>
-            <label for="quantite">Nombre de pots</label>
-            <input type="number" id="quantite" min="1" value="1" required>
-          </div>
-          <div>
-            <label for="date">Pour quand ?</label>
-            <input type="date" id="date" required>
-          </div>
-        </div>
+        <label for="date">Pour quand ?</label>
+        <input type="date" id="date" required>
 
         <label>Retrait ou livraison ?</label>
         <div class="choix-radio">
@@ -274,7 +277,7 @@
         </div>
 
         <label for="message">Un détail à ajouter ? (facultatif)</label>
-        <textarea id="message" rows="3" placeholder="Ex : un message à écrire, une allergie, une heure précise"></textarea>
+        <textarea id="message" rows="3" placeholder="Ex : une heure précise, une allergie, une autre douceur (tarte, cookies, cupcakes...)"></textarea>
 
         <button type="submit" class="bouton bouton-whatsapp">Envoyer ma commande sur WhatsApp</button>
       </form>
@@ -427,11 +430,17 @@
   </footer>
 
 
+  <!-- Barre du panier : apparaît en bas de l'écran dès qu'il y a au moins un pot -->
+  <a href="#commander" class="barre-panier" id="barre-panier" hidden>
+    <span id="barre-texte">0 pot · 0 FCFA</span>
+    <span class="barre-action">Commander →</span>
+  </a>
+
   <!-- Bouton WhatsApp flottant -->
   <a href="#" class="whatsapp-flottant lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais passer une commande." aria-label="Commander sur WhatsApp">
     <svg viewBox="0 0 24 24" width="28" height="28" fill="white" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
   </a>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>

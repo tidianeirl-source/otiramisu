@@ -289,49 +289,90 @@ a { color: inherit; }
 
 .carte h3 { font-size: 1.55rem; margin-bottom: 6px; }
 .carte p { font-size: 0.93rem; color: var(--texte-doux); margin-bottom: 16px; min-height: 3em; }
-.carte-bas { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+.carte-bas { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: auto; }
 .prix { font-weight: 600; font-size: 0.9rem; }
 
-/* ---------- 10. Grands mots en relief (Little Tart + enseigne) ---------- */
-.grands-mots {
-  background: var(--rose);
-  border-top: 2px solid var(--encre);
-  border-bottom: 2px solid var(--encre);
-  padding: 70px 4%;
-  text-align: center;
-}
-.mot {
-  font-family: var(--affiche);
-  font-size: clamp(3.4rem, 11vw, 8.5rem);
-  line-height: 0.95;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  -webkit-text-stroke: 2px var(--encre);   /* contour noir des lettres, comme sur l'enseigne */
-}
-/* text-shadow répété = effet de relief en escalier */
-.mot-or {
-  color: var(--or-clair);
-  text-shadow: 2px 2px 0 var(--encre), 4px 4px 0 var(--encre), 6px 6px 0 var(--encre), 8px 8px 0 rgba(31, 23, 18, 0.25);
-}
-.mot-noir {
-  color: var(--encre);
-  text-shadow: 2px 2px 0 var(--or), 4px 4px 0 var(--or), 6px 6px 0 var(--or);
-}
 
-/* ---------- 12. Étapes ---------- */
-.etapes { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
-.numero {
-  display: block;
-  font-family: var(--affiche);
-  font-size: 5.5rem;
-  line-height: 1;
-  color: var(--or-clair);
-  -webkit-text-stroke: 2px var(--encre);
-  text-shadow: 4px 4px 0 var(--encre);
-  margin-bottom: 10px;
+/* ---------- Compteurs − 0 + (panier) ---------- */
+.compteur {
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid var(--encre);
+  border-radius: 50px;
+  background: var(--fond-clair);
+  overflow: hidden;
 }
-.etapes h3 { font-size: 1.5rem; margin-bottom: 6px; }
-.etapes p { color: var(--texte-doux); max-width: 280px; margin: 0 auto; }
+.compteur button {
+  width: 36px;
+  height: 34px;
+  border: none;
+  background: none;
+  font: 600 1.2rem var(--texte);
+  color: var(--encre);
+  cursor: pointer;
+}
+.compteur button:hover { background: var(--rose); }
+.compteur .nombre { min-width: 26px; text-align: center; font-weight: 600; }
+.compteur.actif { background: var(--or-clair); }             /* doré quand il y a au moins 1 pot */
+.carte.choisie { box-shadow: inset 0 0 0 2px var(--encre); } /* la carte choisie est entourée */
+
+/* Le panier dans le formulaire */
+.label { font-weight: 500; font-size: 0.9rem; margin: 14px 0 6px; }
+.panier { border: 1.5px solid #cdbba5; border-radius: 12px; background: white; }
+.panier-ligne {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+}
+.panier-ligne + .panier-ligne { border-top: 1px solid #efe3d1; }
+.panier-ligne .compteur { transform: scale(0.88); transform-origin: right center; }
+.panier-total { margin-top: 12px; text-align: right; }
+.panier-total strong { font-size: 1.1rem; }
+.panier-erreur { color: #b3261e; font-weight: 500; margin-top: 6px; }
+
+/* Pastille avec le nombre de pots, sur le tampon "Commander" */
+.tampon-commander { position: relative; overflow: visible; }
+.pastille {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 6px;
+  border-radius: 14px;
+  background: var(--encre);
+  color: var(--fond-clair);
+  font: 600 0.85rem var(--texte);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(8deg);
+}
+.pastille[hidden] { display: none; }
+
+/* Barre du panier, en bas de l'écran */
+.barre-panier {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 55;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 14px 24px;
+  background: var(--encre);
+  color: var(--fond-clair);
+  border-radius: 50px;
+  box-shadow: 4px 4px 0 var(--or);
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.barre-panier[hidden] { display: none; }
+.barre-action { color: var(--or-clair); text-transform: uppercase; letter-spacing: 1.2px; font-size: 0.85rem; }
+body.sur-formulaire .barre-panier { display: none; }   /* inutile quand on voit déjà le formulaire */
 
 /* ---------- 13. Formulaire de commande ---------- */
 .commande {
@@ -592,7 +633,6 @@ a { color: inherit; }
   .occasion { min-height: 96px; }
 
 
-  .etapes { grid-template-columns: 1fr; gap: 30px; }
 
   .commande { padding: 30px 18px; }
   .formulaire { padding: 22px 16px; }
@@ -602,6 +642,9 @@ a { color: inherit; }
   .histoire-bloc { padding: 76px 24px 36px; }
 
   .carte-maps { height: 300px; }
+
+  .barre-panier { left: 12px; right: 12px; transform: none; justify-content: space-between; bottom: 12px; }
+  body.avec-panier .whatsapp-flottant { bottom: 84px; }   /* on remonte le bouton WhatsApp au-dessus de la barre */
 
   .pied-haut { grid-template-columns: 1fr; gap: 26px; }
 }
