@@ -264,7 +264,7 @@ a { color: inherit; }
 /* ---------- 9. Cartes de la carte (Levain) ---------- */
 .grille {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);   /* 10 parfums = 2 lignes de 5 */
+  grid-template-columns: repeat(4, 1fr);   /* 12 cartes = 3 lignes de 4 */
   gap: 18px;
 }
 .carte {
@@ -461,23 +461,6 @@ body.sur-formulaire .barre-panier { display: none; }   /* inutile quand on voit 
 .occasion:nth-child(3n+2) { background: var(--carte); }
 .occasion:nth-child(3n)   { background: var(--or-clair); }
 
-/* Grande photo des événements */
-.evenement-vedette {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 40px;
-  align-items: center;
-  background: var(--fond-clair);
-  border: 2px solid var(--encre);
-  border-radius: var(--rayon);
-  padding: 22px;
-  margin-bottom: 22px;
-}
-.evenement-vedette img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; }
-.aussi { margin-top: 30px; grid-template-columns: 1fr 1.1fr; }
-.evenement-vedette h3 { font-size: 1.9rem; margin-bottom: 12px; }
-.evenement-vedette p { color: var(--texte-doux); margin-bottom: 22px; max-width: 420px; }
-@media (max-width: 768px) { .evenement-vedette, .aussi { grid-template-columns: 1fr; gap: 20px; } }
 
 /* ---------- 15. Notre histoire (Cannella) ---------- */
 .histoire { display: grid; grid-template-columns: 0.9fr 1.1fr; align-items: center; }
@@ -686,3 +669,6 @@ body.sur-formulaire .barre-panier { display: none; }   /* inutile quand on voit 
 
   .pied-haut { grid-template-columns: 1fr; gap: 26px; }
 }
+
+/* Vraie photo dans le bloc commande */
+.commande-photo { width: 80%; border-radius: 16px; border: 2px solid var(--encre); filter: none; }

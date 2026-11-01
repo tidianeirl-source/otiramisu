@@ -27,7 +27,7 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=12">
   <!-- ?v=2 : à augmenter (v=3, v=4...) à chaque modification du CSS, pour que les navigateurs ne gardent pas l'ancienne version en mémoire -->
 </head>
 
@@ -258,17 +258,27 @@
         </div>
       </article>
 
-    </div>
+      <!-- LES GÂTEAUX : pas de compteur (leur prix se fixe sur commande), un bouton WhatsApp à la place -->
+      <article class="carte apparition">
+        <div class="carte-image"><img src="images/evenement.jpg" alt="Gâteau tiramisu entouré de biscuits et d'un ruban"></div>
+        <h3>Gâteau tiramisu</h3>
+        <p>Pour vos événements, en différentes saveurs, sur commande.</p>
+        <div class="carte-bas">
+          <span class="prix">Sur commande</span>
+          <a href="#" class="lien-fleche lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais commander un gâteau tiramisu.">Demander</a>
+        </div>
+      </article>
 
-    <!-- ET AUSSI : les autres douceurs (même mise en page que la photo des événements) -->
-    <div class="evenement-vedette aussi apparition">
-      <img src="images/gateau-chocolat.jpg" alt="Gâteau au chocolat noir moelleux Ô'tiramisu">
-      <div>
-        <p class="petit-titre">Et aussi</p>
-        <h3>Gâteau au chocolat noir moelleux</h3>
-        <p>Fait maison, nappé de chocolat noir. Disponible sur commande.</p>
-        <a href="#" class="bouton lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais commander un gâteau au chocolat noir moelleux.">Le commander</a>
-      </div>
+      <article class="carte apparition">
+        <div class="carte-image"><img src="images/gateau-chocolat.jpg" alt="Gâteau au chocolat noir moelleux"></div>
+        <h3>Gâteau au chocolat noir</h3>
+        <p>Moelleux, nappé de chocolat noir. Fait maison.</p>
+        <div class="carte-bas">
+          <span class="prix">Sur commande</span>
+          <a href="#" class="lien-fleche lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais commander un gâteau au chocolat noir moelleux.">Demander</a>
+        </div>
+      </article>
+
     </div>
   </section>
 
@@ -286,7 +296,7 @@
         <h2>Passer commande</h2>
         <p>Choisissez vos pots avec les boutons + (sur la carte ou ici), remplissez le formulaire : WhatsApp s'ouvre avec votre commande et le total déjà écrits.</p>
         <p class="note">Pour une grosse commande ou un événement, commandez au moins 48 h à l'avance.</p>
-        <img class="commande-pot" src="images/illus/speculoos.svg" alt="">
+        <img class="commande-pot commande-photo" src="images/passion.jpg" alt="">
       </div>
 
       <form id="formulaire" class="formulaire">
@@ -329,16 +339,6 @@
       <a href="#" class="lien-fleche lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour un événement.">Demander un devis</a>
     </div>
     <p class="sous-titre">Des pots en quantité ou un gâteau tiramisu, pour régaler tous vos invités. Touchez une occasion pour demander un devis.</p>
-
-    <!-- Grande photo + texte, au-dessus des tuiles -->
-    <div class="evenement-vedette apparition">
-      <img src="images/evenement.jpg" alt="Gâteau tiramisu entouré de biscuits et d'un ruban, pour un événement">
-      <div>
-        <h3>Le tiramisu en gâteau</h3>
-        <p>Pour vos événements, Ô'tiramisu prépare aussi des gâteaux tiramisu, en différentes saveurs, sur commande.</p>
-        <a href="#" class="bouton lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais un gâteau tiramisu pour un événement.">Demander un devis</a>
-      </div>
-    </div>
 
     <!-- Chaque tuile ouvre WhatsApp avec l'occasion déjà écrite dans le message -->
     <div class="occasions">
@@ -488,6 +488,6 @@
     <svg viewBox="0 0 24 24" width="28" height="28" fill="white" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
   </a>
 
-  <script src="script.js?v=11"></script>
+  <script src="script.js?v=12"></script>
 </body>
 </html>
