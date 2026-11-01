@@ -286,9 +286,20 @@ a { color: inherit; }
 }
 .carte-image img { width: 100%; height: 100%; object-fit: contain; padding: 6%; transition: transform 0.4s; }
 .carte:hover .carte-image img { transform: scale(1.05) rotate(-2deg); }
+/* Les vraies photos (.jpg) remplissent tout le cadre ; les dessins (.svg) gardent une marge */
+.carte-image img[src$=".jpg"] { object-fit: cover; padding: 0; }
+.carte:hover .carte-image img[src$=".jpg"] { transform: scale(1.05); }
 
 .carte h3 { font-size: 1.55rem; margin-bottom: 6px; }
 .carte p { font-size: 0.93rem; color: var(--texte-doux); margin-bottom: 16px; min-height: 3em; }
+.carte-texte { display: flex; flex-direction: column; flex: 1; }
+/* Carte large "Personnalisé" : image à gauche, texte à droite, sur 3 colonnes */
+.carte-large { grid-column: span 3; flex-direction: row; gap: 30px; align-items: center; }
+.carte-large .carte-image { flex: 0 0 36%; margin-bottom: 0; aspect-ratio: 4 / 3; }
+.carte-large .carte-bas { margin-top: 18px; }
+.carte-large .carte-texte { justify-content: center; }
+.carte-large p { min-height: 0; }
+.vitrine { margin: 26px 0 0; }
 .carte-bas { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: auto; }
 .prix { font-weight: 600; font-size: 0.9rem; }
 
@@ -450,6 +461,23 @@ body.sur-formulaire .barre-panier { display: none; }   /* inutile quand on voit 
 .occasion:nth-child(3n+2) { background: var(--carte); }
 .occasion:nth-child(3n)   { background: var(--or-clair); }
 
+/* Grande photo des événements */
+.evenement-vedette {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  background: var(--fond-clair);
+  border: 2px solid var(--encre);
+  border-radius: var(--rayon);
+  padding: 22px;
+  margin-bottom: 22px;
+}
+.evenement-vedette img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; }
+.evenement-vedette h3 { font-size: 1.9rem; margin-bottom: 12px; }
+.evenement-vedette p { color: var(--texte-doux); margin-bottom: 22px; max-width: 420px; }
+@media (max-width: 768px) { .evenement-vedette { grid-template-columns: 1fr; gap: 20px; } }
+
 /* ---------- 15. Notre histoire (Cannella) ---------- */
 .histoire { display: grid; grid-template-columns: 0.9fr 1.1fr; align-items: center; }
 .histoire-photo {
@@ -587,6 +615,7 @@ body.sur-formulaire .barre-panier { display: none; }   /* inutile quand on voit 
   .menu { gap: 16px; }
   .menu a { font-size: 0.74rem; }
   .grille, .occasions { grid-template-columns: repeat(2, 1fr); }
+  .carte-large { grid-column: 1 / -1; }
   .commande, .contact { grid-template-columns: 1fr; }
   .commande-pot { display: none; }
   .histoire { grid-template-columns: 1fr; }
@@ -630,6 +659,8 @@ body.sur-formulaire .barre-panier { display: none; }   /* inutile quand on voit 
   .section { padding: 64px 5%; }
   .section-tete { flex-direction: column; align-items: flex-start; }
   .grille, .occasions { grid-template-columns: 1fr; }
+  .carte-large { flex-direction: column; gap: 0; }
+  .carte-large .carte-image { margin-bottom: 18px; }
   .occasion { min-height: 96px; }
 
 

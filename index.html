@@ -27,7 +27,7 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=11">
   <!-- ?v=2 : à augmenter (v=3, v=4...) à chaque modification du CSS, pour que les navigateurs ne gardent pas l'ancienne version en mémoire -->
 </head>
 
@@ -68,7 +68,7 @@
     <div class="hero-visuel apparition">
       <img class="hero-pot hero-pot-1" src="images/illus/classique.svg" alt="">
       <img class="hero-pot hero-pot-2" src="images/illus/passion.svg" alt="">
-      <img class="hero-photo" src="images/hero.jpg" alt="Tiramisu Ô'tiramisu" onerror="this.remove()">
+      <img class="hero-photo" src="images/hero.jpg" alt="Tiramisu mangue-passion Ô'tiramisu" onerror="this.remove()">
       <!-- onerror="this.remove()" : si la photo n'existe pas, on l'enlève et les dessins restent visibles -->
 
       <!-- Tampon rond qui tourne. <textPath> fait suivre au texte le contour d'un cercle. -->
@@ -119,119 +119,177 @@
            onerror remplace la photo par le dessin. -->
 
       <article class="carte apparition">
-        <div class="carte-image"><img src="images/classique.jpg" alt="Tiramisu classique café" onerror="this.onerror=null; this.src='images/illus/classique.svg'"></div>
-        <h3>Classique café</h3>
-        <p>Biscuits imbibés de café, crème mascarpone et cacao amer.</p>
-        <div class="carte-bas">
-          <span class="prix">1 000 FCFA</span> <!-- prix du pot : à changer ici si besoin -->
-          <div class="compteur" data-parfum="Classique café">
-            <button type="button" class="moins" aria-label="Retirer un pot Classique café">−</button>
-            <span class="nombre">0</span>
-            <button type="button" class="plus" aria-label="Ajouter un pot Classique café">+</button>
+        <div class="carte-image"><img src="images/cafe.jpg" alt="Tiramisu café" onerror="this.onerror=null; this.src='images/illus/classique.svg'"></div>
+        <div class="carte-texte">
+          <h3>Café</h3>
+          <p>Biscuits imbibés de café, crème mascarpone et cacao. Un dessert onctueux pour les amateurs de café.</p>
+          <div class="carte-bas">
+            <span class="prix">1 000 FCFA</span>
+            <div class="compteur" data-parfum="Café">
+              <button type="button" class="moins" aria-label="Retirer un pot Café">−</button>
+              <span class="nombre">0</span>
+              <button type="button" class="plus" aria-label="Ajouter un pot Café">+</button>
+            </div>
           </div>
         </div>
       </article>
 
       <article class="carte apparition">
-        <div class="carte-image"><img src="images/oreo.jpg" alt="Tiramisu Oreo" onerror="this.onerror=null; this.src='images/illus/oreo.svg'"></div>
-        <h3>Oreo</h3>
-        <p>Crème vanillée et éclats de biscuits Oreo.</p>
-        <div class="carte-bas">
-          <span class="prix">1 000 FCFA</span>
-          <div class="compteur" data-parfum="Oreo">
-            <button type="button" class="moins" aria-label="Retirer un pot Oreo">−</button>
-            <span class="nombre">0</span>
-            <button type="button" class="plus" aria-label="Ajouter un pot Oreo">+</button>
+        <div class="carte-image"><img src="images/oreo.jpg" alt="Tiramisu oreo" onerror="this.onerror=null; this.src='images/illus/oreo.svg'"></div>
+        <div class="carte-texte">
+          <h3>Oreo</h3>
+          <p>Crème mascarpone et biscuits Oreo, gourmand et croquant.</p>
+          <div class="carte-bas">
+            <span class="prix">1 000 FCFA</span>
+            <div class="compteur" data-parfum="Oreo">
+              <button type="button" class="moins" aria-label="Retirer un pot Oreo">−</button>
+              <span class="nombre">0</span>
+              <button type="button" class="plus" aria-label="Ajouter un pot Oreo">+</button>
+            </div>
           </div>
         </div>
       </article>
 
       <article class="carte apparition">
-        <div class="carte-image"><img src="images/speculoos.jpg" alt="Tiramisu spéculoos" onerror="this.onerror=null; this.src='images/illus/speculoos.svg'"></div>
-        <h3>Spéculoos</h3>
-        <p>Le goût caramélisé du spéculoos dans une crème généreuse.</p>
-        <div class="carte-bas">
-          <span class="prix">1 000 FCFA</span>
-          <div class="compteur" data-parfum="Spéculoos">
-            <button type="button" class="moins" aria-label="Retirer un pot Spéculoos">−</button>
-            <span class="nombre">0</span>
-            <button type="button" class="plus" aria-label="Ajouter un pot Spéculoos">+</button>
+        <div class="carte-image"><img src="images/kinder.jpg" alt="Tiramisu kinder" onerror="this.onerror=null; this.src='images/illus/classique.svg'"></div>
+        <div class="carte-texte">
+          <h3>Kinder</h3>
+          <p>Crème mascarpone et éclats de chocolat Kinder.</p>
+          <div class="carte-bas">
+            <span class="prix">1 000 FCFA</span>
+            <div class="compteur" data-parfum="Kinder">
+              <button type="button" class="moins" aria-label="Retirer un pot Kinder">−</button>
+              <span class="nombre">0</span>
+              <button type="button" class="plus" aria-label="Ajouter un pot Kinder">+</button>
+            </div>
           </div>
         </div>
       </article>
 
-
-
+      <article class="carte apparition">
+        <div class="carte-image"><img src="images/speculoos.jpg" alt="Tiramisu spéculoos pralin" onerror="this.onerror=null; this.src='images/illus/speculoos.svg'"></div>
+        <div class="carte-texte">
+          <h3>Spéculoos pralin</h3>
+          <p>Spéculoos et éclats de pralin croquants sur une crème mascarpone.</p>
+          <div class="carte-bas">
+            <span class="prix">1 000 FCFA</span>
+            <div class="compteur" data-parfum="Spéculoos pralin">
+              <button type="button" class="moins" aria-label="Retirer un pot Spéculoos pralin">−</button>
+              <span class="nombre">0</span>
+              <button type="button" class="plus" aria-label="Ajouter un pot Spéculoos pralin">+</button>
+            </div>
+          </div>
+        </div>
+      </article>
 
       <article class="carte apparition">
         <div class="carte-image"><img src="images/passion.jpg" alt="Tiramisu passion" onerror="this.onerror=null; this.src='images/illus/passion.svg'"></div>
-        <h3>Passion</h3>
-        <p>Crème mascarpone et coulis de fruit de la passion, acidulé et frais.</p>
-        <div class="carte-bas">
-          <span class="prix">1 000 FCFA</span>
-          <div class="compteur" data-parfum="Passion">
-            <button type="button" class="moins" aria-label="Retirer un pot Passion">−</button>
-            <span class="nombre">0</span>
-            <button type="button" class="plus" aria-label="Ajouter un pot Passion">+</button>
+        <div class="carte-texte">
+          <h3>Passion</h3>
+          <p>Crème mascarpone et coulis de fruit de la passion, avec ses petites graines.</p>
+          <div class="carte-bas">
+            <span class="prix">1 000 FCFA</span>
+            <div class="compteur" data-parfum="Passion">
+              <button type="button" class="moins" aria-label="Retirer un pot Passion">−</button>
+              <span class="nombre">0</span>
+              <button type="button" class="plus" aria-label="Ajouter un pot Passion">+</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="carte apparition">
+        <div class="carte-image"><img src="images/mangue-passion.jpg" alt="Tiramisu mangue-passion" onerror="this.onerror=null; this.src='images/illus/passion.svg'"></div>
+        <div class="carte-texte">
+          <h3>Mangue-passion</h3>
+          <p>Crème mascarpone et coulis mangue-passion.</p>
+          <div class="carte-bas">
+            <span class="prix">1 000 FCFA</span>
+            <div class="compteur" data-parfum="Mangue-passion">
+              <button type="button" class="moins" aria-label="Retirer un pot Mangue-passion">−</button>
+              <span class="nombre">0</span>
+              <button type="button" class="plus" aria-label="Ajouter un pot Mangue-passion">+</button>
+            </div>
           </div>
         </div>
       </article>
 
       <article class="carte apparition">
         <div class="carte-image"><img src="images/mangue.jpg" alt="Tiramisu mangue" onerror="this.onerror=null; this.src='images/illus/mangue.svg'"></div>
-        <h3>Mangue</h3>
-        <p>Crème mascarpone et morceaux de mangue.</p>
-        <div class="carte-bas">
-          <span class="prix">1 000 FCFA</span>
-          <div class="compteur" data-parfum="Mangue">
-            <button type="button" class="moins" aria-label="Retirer un pot Mangue">−</button>
-            <span class="nombre">0</span>
-            <button type="button" class="plus" aria-label="Ajouter un pot Mangue">+</button>
+        <div class="carte-texte">
+          <h3>Mangue</h3>
+          <p>Crème mascarpone et coulis de mangue.</p>
+          <div class="carte-bas">
+            <span class="prix">1 000 FCFA</span>
+            <div class="compteur" data-parfum="Mangue">
+              <button type="button" class="moins" aria-label="Retirer un pot Mangue">−</button>
+              <span class="nombre">0</span>
+              <button type="button" class="plus" aria-label="Ajouter un pot Mangue">+</button>
+            </div>
           </div>
         </div>
       </article>
 
       <article class="carte apparition">
         <div class="carte-image"><img src="images/ananas.jpg" alt="Tiramisu ananas" onerror="this.onerror=null; this.src='images/illus/ananas.svg'"></div>
-        <h3>Ananas</h3>
-        <p>Crème mascarpone et morceaux d'ananas.</p>
-        <div class="carte-bas">
-          <span class="prix">1 000 FCFA</span>
-          <div class="compteur" data-parfum="Ananas">
-            <button type="button" class="moins" aria-label="Retirer un pot Ananas">−</button>
-            <span class="nombre">0</span>
-            <button type="button" class="plus" aria-label="Ajouter un pot Ananas">+</button>
+        <div class="carte-texte">
+          <h3>Ananas</h3>
+          <p>Crème mascarpone et coulis d'ananas.</p>
+          <div class="carte-bas">
+            <span class="prix">1 000 FCFA</span>
+            <div class="compteur" data-parfum="Ananas">
+              <button type="button" class="moins" aria-label="Retirer un pot Ananas">−</button>
+              <span class="nombre">0</span>
+              <button type="button" class="plus" aria-label="Ajouter un pot Ananas">+</button>
+            </div>
           </div>
         </div>
       </article>
 
       <article class="carte apparition">
         <div class="carte-image"><img src="images/citron.jpg" alt="Tiramisu citron" onerror="this.onerror=null; this.src='images/illus/citron.svg'"></div>
-        <h3>Citron</h3>
-        <p>Crème mascarpone au citron, fraîche et acidulée.</p>
-        <div class="carte-bas">
-          <span class="prix">1 000 FCFA</span>
-          <div class="compteur" data-parfum="Citron">
-            <button type="button" class="moins" aria-label="Retirer un pot Citron">−</button>
-            <span class="nombre">0</span>
-            <button type="button" class="plus" aria-label="Ajouter un pot Citron">+</button>
+        <div class="carte-texte">
+          <h3>Citron</h3>
+          <p>Crème mascarpone et crème de citron, fraîche et acidulée.</p>
+          <div class="carte-bas">
+            <span class="prix">1 000 FCFA</span>
+            <div class="compteur" data-parfum="Citron">
+              <button type="button" class="moins" aria-label="Retirer un pot Citron">−</button>
+              <span class="nombre">0</span>
+              <button type="button" class="plus" aria-label="Ajouter un pot Citron">+</button>
+            </div>
           </div>
         </div>
       </article>
 
-      <article class="carte apparition">
+      <!-- Carte large (classe carte-large) : elle prend 3 colonnes sur ordinateur -->
+      <article class="carte apparition carte-large">
         <div class="carte-image"><img src="images/personnalise.jpg" alt="Tiramisu personnalisé" onerror="this.onerror=null; this.src='images/illus/personnalise.svg'"></div>
-        <h3>Personnalisé</h3>
-        <p>Vous choisissez les parfums et la décoration, on le prépare à votre goût.</p>
-        <div class="carte-bas">
-          <span class="prix">1 000 FCFA</span>
-          <div class="compteur" data-parfum="Personnalisé">
-            <button type="button" class="moins" aria-label="Retirer un pot Personnalisé">−</button>
-            <span class="nombre">0</span>
-            <button type="button" class="plus" aria-label="Ajouter un pot Personnalisé">+</button>
+        <div class="carte-texte">
+          <h3>Personnalisé</h3>
+          <p>Vous choisissez les parfums et la décoration, on le prépare à votre goût. Décrivez-le dans le formulaire de commande.</p>
+          <div class="carte-bas">
+            <span class="prix">1 000 FCFA</span>
+            <div class="compteur" data-parfum="Personnalisé">
+              <button type="button" class="moins" aria-label="Retirer un pot Personnalisé">−</button>
+              <span class="nombre">0</span>
+              <button type="button" class="plus" aria-label="Ajouter un pot Personnalisé">+</button>
+            </div>
           </div>
         </div>
       </article>
+
+    </div>
+
+    <!-- AUSSI EN VITRINE : le gâteau au chocolat (prix à confirmer, donc bouton "Demander le prix") -->
+    <div class="evenement-vedette vitrine apparition">
+      <img src="images/gateau-chocolat.jpg" alt="Gâteau au chocolat noir moelleux Ô'tiramisu">
+      <div>
+        <p class="petit-titre">Aussi en vitrine</p>
+        <h3>Gâteau au chocolat noir moelleux</h3>
+        <p>Un gâteau fondant au chocolat noir, nappé de chocolat.</p>
+        <a href="#" class="bouton lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais commander le gâteau au chocolat noir moelleux. Quel est le prix ?">Demander le prix</a>
+      </div>
     </div>
   </section>
 
@@ -291,7 +349,17 @@
       <h2>Pour chaque occasion</h2>
       <a href="#" class="lien-fleche lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour un événement.">Demander un devis</a>
     </div>
-    <p class="sous-titre">Des pots en quantité, avec plusieurs parfums, pour régaler tous vos invités. Touchez une occasion pour demander un devis.</p>
+    <p class="sous-titre">Des pots en quantité ou un gâteau tiramisu, pour régaler tous vos invités. Touchez une occasion pour demander un devis.</p>
+
+    <!-- Grande photo + texte, au-dessus des tuiles -->
+    <div class="evenement-vedette apparition">
+      <img src="images/evenement.jpg" alt="Gâteau tiramisu entouré de biscuits et d'un ruban, pour un événement">
+      <div>
+        <h3>Le tiramisu en gâteau</h3>
+        <p>Pour vos événements, Ô'tiramisu prépare aussi des gâteaux tiramisu, en différentes saveurs, sur commande.</p>
+        <a href="#" class="bouton lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais un gâteau tiramisu pour un événement.">Demander un devis</a>
+      </div>
+    </div>
 
     <!-- Chaque tuile ouvre WhatsApp avec l'occasion déjà écrite dans le message -->
     <div class="occasions">
@@ -441,6 +509,6 @@
     <svg viewBox="0 0 24 24" width="28" height="28" fill="white" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
   </a>
 
-  <script src="script.js?v=9"></script>
+  <script src="script.js?v=11"></script>
 </body>
 </html>
