@@ -27,7 +27,7 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=13">
   <!-- ?v=2 : à augmenter (v=3, v=4...) à chaque modification du CSS, pour que les navigateurs ne gardent pas l'ancienne version en mémoire -->
 </head>
 
@@ -42,19 +42,16 @@
 
 
   <!-- ================= EN-TÊTE ================= -->
-  <!-- Menu à gauche, logo au centre, tampon "Commander" à droite -->
+  <!-- Menu à gauche, logo au centre (le burger à droite sur téléphone) -->
   <header class="entete" id="entete">
     <nav class="menu" id="menu">
       <a href="#produits">La carte</a>
-      <a href="#evenements">Événements</a>
       <a href="#contact">Contact</a>
     </nav>
 
     <a href="#accueil" class="logo"><img src="images/logo.png" alt="Ô'tiramisu, les petits sucrés"></a>
 
     <div class="entete-droite">
-      <!-- Le tampon rond, comme un sceau -->
-      <a href="#commander" class="tampon-commander">Commander<span class="pastille" id="pastille" hidden>0</span></a>
       <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
     </div>
   </header>
@@ -71,14 +68,6 @@
       <img class="hero-photo" src="images/hero.jpg" alt="Tiramisu mangue-passion Ô'tiramisu" onerror="this.remove()">
       <!-- onerror="this.remove()" : si la photo n'existe pas, on l'enlève et les dessins restent visibles -->
 
-      <!-- Tampon rond qui tourne. <textPath> fait suivre au texte le contour d'un cercle. -->
-      <svg class="sceau" viewBox="0 0 120 120" aria-hidden="true">
-        <defs><path id="cercle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
-        <circle cx="60" cy="60" r="58" fill="#e3bf4f" stroke="#1f1712" stroke-width="3"/>
-        <text><textPath href="#cercle" textLength="272" lengthAdjust="spacing">FAIT MAISON · GRAND-BASSAM · FAIT MAISON · GRAND-BASSAM ·</textPath></text>
-        <!-- textLength = on force le texte à faire exactement le tour du cercle -->
-        <circle cx="60" cy="60" r="16" fill="#fffaf2" stroke="#1f1712" stroke-width="3"/>
-      </svg>
     </div>
 
     <div class="hero-texte apparition">
@@ -111,6 +100,8 @@
       <a href="#commander" class="lien-fleche">Commander</a>
     </div>
 
+    <!-- 1re partie de la carte : les tiramisus en pot -->
+    <h3 class="carte-titre">Tiramisus <span>en pot individuel · 1 000 FCFA</span></h3>
     <div class="grille">
       <!-- Pour ajouter un parfum : copie un <article> entier et change le texte, l'image et le data-parfum
            (le data-parfum est écrit 3 fois dans le compteur : garde le même nom partout).
@@ -258,7 +249,11 @@
         </div>
       </article>
 
-      <!-- LES GÂTEAUX : pas de compteur (leur prix se fixe sur commande), un bouton WhatsApp à la place -->
+    </div>
+
+    <!-- 2e partie : LES GÂTEAUX. Pas de compteur (leur prix se fixe sur commande), un bouton WhatsApp à la place -->
+    <h3 class="carte-titre">Gâteaux <span>sur commande</span></h3>
+    <div class="grille grille-gateaux">
       <article class="carte apparition">
         <div class="carte-image"><img src="images/evenement.jpg" alt="Gâteau tiramisu entouré de biscuits et d'un ruban"></div>
         <h3>Gâteau tiramisu</h3>
@@ -280,6 +275,10 @@
       </article>
 
     </div>
+
+    <!-- Remplace l'ancienne section "Pour chaque occasion" -->
+    <p class="evenement-phrase">Anniversaire, mariage, baptême, entreprise : pour un événement,
+      <a href="#" class="lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour un événement.">demandez-nous un devis</a>.</p>
   </section>
 
 
@@ -332,24 +331,6 @@
   </section>
 
 
-  <!-- ================= ÉVÉNEMENTS (une tuile par occasion) ================= -->
-  <section class="section" id="evenements">
-    <div class="section-tete">
-      <h2>Pour chaque occasion</h2>
-      <a href="#" class="lien-fleche lien-whatsapp" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour un événement.">Demander un devis</a>
-    </div>
-    <p class="sous-titre">Des pots en quantité ou un gâteau tiramisu, pour régaler tous vos invités. Touchez une occasion pour demander un devis.</p>
-
-    <!-- Chaque tuile ouvre WhatsApp avec l'occasion déjà écrite dans le message -->
-    <div class="occasions">
-      <a href="#" class="occasion lien-whatsapp apparition" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour un anniversaire."><span>Anniversaires</span></a>
-      <a href="#" class="occasion lien-whatsapp apparition" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour un mariage."><span>Mariages</span></a>
-      <a href="#" class="occasion lien-whatsapp apparition" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour un baptême."><span>Baptêmes</span></a>
-      <a href="#" class="occasion lien-whatsapp apparition" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour une entreprise."><span>Entreprises</span></a>
-      <a href="#" class="occasion lien-whatsapp apparition" data-message="Bonjour Ô'tiramisu, je voudrais un devis pour les fêtes de fin d'année."><span>Fêtes de fin d'année</span></a>
-      <a href="#" class="occasion lien-whatsapp apparition" data-message="Bonjour Ô'tiramisu, je voudrais offrir des tiramisus en cadeau."><span>Cadeaux</span></a>
-    </div>
-  </section>
 
 
   <!-- ================= NOTRE HISTOIRE ================= -->
@@ -463,7 +444,6 @@
       <a href="#accueil" class="logo"><img src="images/logo-clair.png" alt="Ô'tiramisu, les petits sucrés"></a>
       <nav class="pied-menu">
         <a href="#produits">La carte</a>
-        <a href="#evenements">Événements</a>
         <a href="#commander">Commander</a>
       </nav>
       <div class="pied-contact">
@@ -488,6 +468,6 @@
     <svg viewBox="0 0 24 24" width="28" height="28" fill="white" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
   </a>
 
-  <script src="script.js?v=12"></script>
+  <script src="script.js?v=13"></script>
 </body>
 </html>

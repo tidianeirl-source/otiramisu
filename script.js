@@ -117,7 +117,7 @@ function totalPots() {
   return Object.values(panier).reduce(function (somme, n) { return somme + n; }, 0);
 }
 
-// 6e. Mettre à jour tout ce qui affiche le panier (cartes, formulaire, barre, pastille)
+// 6e. Mettre à jour tout ce qui affiche le panier (cartes, formulaire, barre)
 const champMessage = document.getElementById("message");
 const textePlaceholder = champMessage.placeholder;
 
@@ -138,9 +138,6 @@ function afficherPanier() {
   document.getElementById("barre-panier").hidden = n === 0;
   document.body.classList.toggle("avec-panier", n > 0);
 
-  const pastille = document.getElementById("pastille");
-  pastille.textContent = n;
-  pastille.hidden = n === 0;
 
   if (n > 0) document.getElementById("panier-erreur").hidden = true;
 
