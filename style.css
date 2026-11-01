@@ -264,15 +264,15 @@ a { color: inherit; }
 /* ---------- 9. Cartes de la carte (Levain) ---------- */
 .grille {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);   /* 4 parfums = 4 colonnes */
-  gap: 26px;
+  grid-template-columns: repeat(5, 1fr);   /* 10 parfums = 2 lignes de 5 */
+  gap: 18px;
 }
 .carte {
   display: flex;              /* en colonne : le bas de carte (prix) reste aligné */
   flex-direction: column;
   background: var(--carte);
   border-radius: var(--rayon);
-  padding: 18px 18px 22px;
+  padding: 14px 14px 18px;
   transition: transform 0.3s;
 }
 .carte:hover { transform: translateY(-6px); }
@@ -290,7 +290,7 @@ a { color: inherit; }
 .carte-image img[src$=".jpg"] { object-fit: cover; padding: 0; }
 .carte:hover .carte-image img[src$=".jpg"] { transform: scale(1.05); }
 
-.carte h3 { font-size: 1.55rem; margin-bottom: 6px; }
+.carte h3 { font-size: 1.35rem; margin-bottom: 6px; }
 .carte p { font-size: 0.93rem; color: var(--texte-doux); margin-bottom: 16px; min-height: 3em; }
 .carte-texte { display: flex; flex-direction: column; flex: 1; }
 /* Carte large "Personnalisé" : image à gauche, texte à droite, sur 3 colonnes */
@@ -301,7 +301,7 @@ a { color: inherit; }
 .carte-large p { min-height: 0; }
 .vitrine { margin: 26px 0 0; }
 .carte-bas { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: auto; }
-.prix { font-weight: 600; font-size: 0.9rem; }
+.prix { font-weight: 600; font-size: 0.85rem; white-space: nowrap; }
 
 
 /* ---------- Compteurs − 0 + (panier) ---------- */
@@ -314,8 +314,8 @@ a { color: inherit; }
   overflow: hidden;
 }
 .compteur button {
-  width: 36px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border: none;
   background: none;
   font: 600 1.2rem var(--texte);
@@ -323,7 +323,7 @@ a { color: inherit; }
   cursor: pointer;
 }
 .compteur button:hover { background: var(--rose); }
-.compteur .nombre { min-width: 26px; text-align: center; font-weight: 600; }
+.compteur .nombre { min-width: 22px; text-align: center; font-weight: 600; }
 .compteur.actif { background: var(--or-clair); }             /* doré quand il y a au moins 1 pot */
 .carte.choisie { box-shadow: inset 0 0 0 2px var(--encre); } /* la carte choisie est entourée */
 
@@ -474,9 +474,10 @@ body.sur-formulaire .barre-panier { display: none; }   /* inutile quand on voit 
   margin-bottom: 22px;
 }
 .evenement-vedette img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; }
+.aussi { margin-top: 30px; grid-template-columns: 1fr 1.1fr; }
 .evenement-vedette h3 { font-size: 1.9rem; margin-bottom: 12px; }
 .evenement-vedette p { color: var(--texte-doux); margin-bottom: 22px; max-width: 420px; }
-@media (max-width: 768px) { .evenement-vedette { grid-template-columns: 1fr; gap: 20px; } }
+@media (max-width: 768px) { .evenement-vedette, .aussi { grid-template-columns: 1fr; gap: 20px; } }
 
 /* ---------- 15. Notre histoire (Cannella) ---------- */
 .histoire { display: grid; grid-template-columns: 0.9fr 1.1fr; align-items: center; }
@@ -614,7 +615,8 @@ body.sur-formulaire .barre-panier { display: none; }   /* inutile quand on voit 
 @media (max-width: 980px) {
   .menu { gap: 16px; }
   .menu a { font-size: 0.74rem; }
-  .grille, .occasions { grid-template-columns: repeat(2, 1fr); }
+  .grille { grid-template-columns: repeat(3, 1fr); }
+  .occasions { grid-template-columns: repeat(2, 1fr); }
   .carte-large { grid-column: 1 / -1; }
   .commande, .contact { grid-template-columns: 1fr; }
   .commande-pot { display: none; }
@@ -658,7 +660,12 @@ body.sur-formulaire .barre-panier { display: none; }   /* inutile quand on voit 
 
   .section { padding: 64px 5%; }
   .section-tete { flex-direction: column; align-items: flex-start; }
-  .grille, .occasions { grid-template-columns: 1fr; }
+  .grille { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .carte { padding: 10px 10px 14px; }
+  .carte h3 { font-size: 1.1rem; }
+  .carte p { font-size: 0.8rem; min-height: 0; }
+  .carte-bas { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .occasions { grid-template-columns: 1fr; }
   .carte-large { flex-direction: column; gap: 0; }
   .carte-large .carte-image { margin-bottom: 18px; }
   .occasion { min-height: 96px; }
