@@ -64,8 +64,27 @@ document.querySelectorAll(".choisir").forEach(function (bouton) {
   bouton.addEventListener("click", function () {
     champParfum.value = bouton.dataset.parfum;
     document.getElementById("commander").scrollIntoView();
+    indiquerPersonnalise();
   });
 });
+
+
+// ---------- 6 bis. Tiramisu personnalisé ----------
+// Si la personne choisit "Personnalisé", on l'invite à décrire son tiramisu dans le champ "détail".
+const champMessage = document.getElementById("message");
+const textePlaceholder = champMessage.placeholder; // on garde le texte d'origine
+
+function indiquerPersonnalise() {
+  if (champParfum.value === "Personnalisé") {
+    champMessage.placeholder = "Décrivez votre tiramisu : parfums, décoration, message à écrire...";
+    champMessage.required = true;   // la description devient obligatoire
+  } else {
+    champMessage.placeholder = textePlaceholder;
+    champMessage.required = false;
+  }
+}
+// "change" = quand la personne choisit une autre option dans la liste
+champParfum.addEventListener("change", indiquerPersonnalise);
 
 
 // ---------- 7. Afficher / cacher le champ adresse ----------
